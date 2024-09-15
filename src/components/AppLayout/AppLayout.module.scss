@@ -1,0 +1,39 @@
+@import "../../theme/sizes";
+
+.content {
+  min-height: calc(100vh - $size * 12);
+  padding: $size6x;
+}
+
+.sider {
+  position: fixed;
+  overflow-y: auto;
+  inset-inline-start: 0;
+  top: 0;
+  bottom: 0;
+  scrollbar-width: thin;
+  scrollbar-color: unset;
+
+  .menu {
+    margin-top: $size * 10;
+    :global {
+      .ant-menu-item {
+        margin-bottom: $size2x;
+        display: flex;
+        justify-content: center;
+      }
+
+      .ant-menu-item-icon {
+        margin-right: $size2x;
+      }
+    }
+  }
+}
+
+.footer {
+  background-color: var(--ant-color-neutral-1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: $size * 12;
+}
