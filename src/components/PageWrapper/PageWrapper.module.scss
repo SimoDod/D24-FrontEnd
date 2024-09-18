@@ -1,0 +1,12 @@
+@import "../../theme/sizes";
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: $size;
+  margin-bottom: $size3x;
+
+  .headerSider {
+    flex-direction: row;
+  }
+}

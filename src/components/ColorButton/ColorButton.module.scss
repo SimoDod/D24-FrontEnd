@@ -1,0 +1,27 @@
+.green {
+  color: var(--ant-color-green-7);
+}
+
+.blue {
+  color: var(--ant-color-primary-7);
+}
+
+.red {
+  color: var(--ant-color-red-7);
+}
+
+// Set to !important otherwise the ant design's theme overrides it
+.green:hover {
+  border-color: var(--ant-color-green-5) !important;
+  color: var(--ant-color-green-5) !important;
+}
+
+.blue:hover {
+  border-color: var(--ant-color-primary-5) !important;
+  color: var(--ant-color-primary-5) !important;
+}
+
+.red:hover {
+  border-color: var(--ant-color-red-5) !important;
+  color: var(--ant-color-red-5) !important;
+}

@@ -1,9 +1,13 @@
 export const routePaths = {
+  login: { label: "", path: "/login" },
+  register: { label: "", path: "/register" },
   home: { label: "sider.home", path: "/" },
   releaseNotes: { label: "sider.releaseNotes", path: "/release-notes" },
-  createLearningReport: {
-    label: "sider.createLearningReport",
-    path: "/create-learning-report",
+  learningReport: {
+    label: "sider.learningReport",
+    path: "/learning-report/:reportNumber",
+    pathNew: "/learning-report/new",
+    new: "new",
   },
   allLearningReports: {
     label: "sider.allLearningReports",
@@ -18,10 +22,3 @@ export const routePaths = {
     path: "/maintenance",
   },
 } as const;
-
-export type RoutePathEntries = Partial<{
-  [K in keyof typeof routePaths]: {
-    label: (typeof routePaths)[K]["label"];
-    path: (typeof routePaths)[K]["path"];
-  };
-}>;

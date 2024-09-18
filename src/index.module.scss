@@ -1,4 +1,13 @@
-body {
-  padding: 0;
-  margin: 0;
+@import "../src/theme/sizes";
+
+// Global classes from ant-design
+// Which the theme does not supports natively
+:global {
+  .ant-select-arrow {
+    bottom: 20px;
+  }
+
+  .ant-btn-sm {
+    padding: $size $size3x;
+  }
 }

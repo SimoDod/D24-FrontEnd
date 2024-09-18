@@ -37,7 +37,9 @@ export const ThemeContextProvider = ({ children }: PropsWithChildren) => {
 
   return (
     <ThemeContext.Provider value={{ themeType, setThemeType }}>
-      <ConfigProvider theme={theme}>{children}</ConfigProvider>
+      <ConfigProvider componentSize="middle" theme={theme}>
+        {children}
+      </ConfigProvider>
     </ThemeContext.Provider>
   );
 };

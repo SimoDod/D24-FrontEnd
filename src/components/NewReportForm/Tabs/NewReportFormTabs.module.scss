@@ -1,0 +1,39 @@
+@import "../../../theme/sizes";
+
+.datePicker {
+  width: 100%;
+  height: $size * 10;
+  padding: $size3x;
+}
+
+.selectedRow {
+  background-color: var(--ant-color-primary-1);
+}
+
+.paragraph {
+  text-align: center;
+
+  .switch {
+    width: 80%;
+  }
+}
+
+.colorWarning {
+  color: var(--ant-color-orange-6);
+}
+
+.statisticsContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 6%;
+
+  .statisticsCol {
+    width: $size * 50;
+  }
+}
+
+.textAreaContainer {
+  max-width: $size * 300;
+}

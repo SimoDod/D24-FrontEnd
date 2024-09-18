@@ -46,10 +46,10 @@ const useMenuItems = (collapsed: boolean) => {
       label: collapsed ? null : t("sider.reports"),
       children: [
         {
-          key: routePaths.createLearningReport.path,
+          key: routePaths.learningReport.path,
           icon: createElement(SnippetsFilled),
-          label: collapsed ? null : t(routePaths.createLearningReport.label),
-          onClick: () => navigate(routePaths.createLearningReport.path),
+          label: collapsed ? null : t(routePaths.learningReport.label),
+          onClick: () => navigate(routePaths.learningReport.pathNew),
         },
         {
           key: routePaths.allLearningReports.path,

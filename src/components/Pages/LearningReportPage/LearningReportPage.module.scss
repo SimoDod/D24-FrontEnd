@@ -1,0 +1,19 @@
+@import "../../../theme//sizes";
+
+.container {
+  background-color: var(--ant-color-neutral-1);
+  padding: $size6x $size4x;
+  margin-bottom: $size6x;
+  border-radius: $size2x;
+
+  .status {
+    font-size: $size5x;
+  }
+}
+
+.tabTitle {
+  text-align: center;
+  padding-top: $size * 10;
+  padding-bottom: $size * 20;
+  color: var(--ant-color-primary-10) !important;
+}

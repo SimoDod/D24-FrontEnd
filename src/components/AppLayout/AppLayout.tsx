@@ -1,14 +1,21 @@
 import classes from "./AppLayout.module.scss";
 import { Layout, Menu, Image } from "antd";
 import { Outlet } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 const { Content, Footer, Sider } = Layout;
 import siderLogo from "../../assets/images/asml-logo.svg";
 import useMenuItems from "./hooks/useMenuItems";
+import { useAppDispatch } from "../../store/store";
+import { fetchUserThunk } from "../../store/thunks/fetchUserThunk";
 
 const App = () => {
   const [collapsed, setCollapsed] = useState(false);
   const items = useMenuItems(collapsed);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(fetchUserThunk());
+  }, [dispatch]);
 
   return (
     <Layout hasSider>
@@ -17,7 +24,7 @@ const App = () => {
         className={classes.sider}
         collapsible
         collapsedWidth={60}
-        breakpoint="sm"
+        breakpoint="md"
         onCollapse={(isCollapsed) => setCollapsed(isCollapsed)}
       >
         <Image src={siderLogo} preview={false} alt="Sider Logo" />
