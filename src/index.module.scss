@@ -1,7 +1,8 @@
 @import "../src/theme/sizes";
 
 // Global classes from ant-design
-// Which the theme does not supports natively
+// Which the theme provider does not supports natively
+// Or are not loading properly from antd by some bug
 :global {
   .ant-select-arrow {
     bottom: 20px;
@@ -9,5 +10,25 @@
 
   .ant-btn-sm {
     padding: $size $size3x;
+  }
+
+  .ant-message-notice {
+    font-size: $size4x;
+  }
+
+  .ant-tag {
+    padding: 2px $size3x;
+  }
+
+  .ant-pagination {
+    .ant-pagination-item-active,
+    .ant-pagination-next,
+    .ant-pagination-item,
+    .ant-pagination-prev {
+      display: flex;
+      align-items: center;
+      padding: 0 $size2x;
+      height: $size7x !important;
+    }
   }
 }

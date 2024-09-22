@@ -1,7 +1,7 @@
 import { Input, Row, Select, Typography } from "antd";
 import FormItemCol from "../../FormItemCol/FormItemCol";
 import { useTranslation } from "react-i18next";
-import MyDatePicker, { dateFormats } from "../../DatePicker/constants";
+import { dateFormats } from "../../DatePicker/constants";
 import TextArea from "antd/es/input/TextArea";
 import classes from "./NewReportFormTabs.module.scss";
 import { useFormikContext } from "formik";
@@ -12,7 +12,8 @@ import {
   Segments,
   TechBuckets,
 } from "../types";
-import { isDate } from "date-fns";
+import { format, isValid, parseISO } from "date-fns";
+import MyDatePicker from "../../DatePicker/DatePicker";
 
 const { Option } = Select;
 const { Text } = Typography;
@@ -20,6 +21,10 @@ const { Text } = Typography;
 const GeneralInformationTab = () => {
   const { values, setFieldValue, errors, touched } = useFormikContext<Report>();
   const { t } = useTranslation();
+
+  const parseDateValue = (value: string | null) => {
+    return value && isValid(parseISO(value)) ? parseISO(value) : null;
+  };
 
   return (
     <Row gutter={[16, 16]}>
@@ -103,16 +108,17 @@ const GeneralInformationTab = () => {
       >
         <MyDatePicker
           showTime
-          format={dateFormats.complete}
-          placeholder={dateFormats.complete}
+          format={dateFormats.displayComplete}
+          placeholder={dateFormats.displayComplete}
           className={classes.datePicker}
           status={errors.timestampCraftsmanship ? "warning" : ""}
-          value={
-            isDate(values.timestampCraftsmanship)
-              ? values.timestampCraftsmanship
-              : null
+          value={parseDateValue(values.timestampCraftsmanship)}
+          onChange={(v: Date) =>
+            setFieldValue(
+              "timestampCraftsmanship",
+              v ? format(v, dateFormats.complete) : null
+            )
           }
-          onChange={(v) => setFieldValue("timestampCraftsmanship", v)}
         />
       </FormItemCol>
       <FormItemCol label={t("newReportTabs.lhm")} name="lhm">

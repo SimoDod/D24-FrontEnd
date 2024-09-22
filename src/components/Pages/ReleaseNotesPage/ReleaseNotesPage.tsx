@@ -11,9 +11,8 @@ const ReleaseNotesPage = () => {
   return (
     <PageWrapper title={t(routePaths.releaseNotes.label)}>
       <Row gutter={[16, 16]}>
-        <Col span={5}>
+        <Col flex="none" span={9}>
           <Anchor
-            style={{ marginTop: 50 }}
             items={[
               {
                 key: "1",
@@ -54,7 +53,7 @@ const ReleaseNotesPage = () => {
           />
         </Col>
 
-        <Col span={10}>
+        <Col span={15}>
           <Flex style={{ marginBottom: 50 }} vertical gap={100}>
             <Card id="version-1-0-0" title="Version 1.0.0">
               <Paragraph>

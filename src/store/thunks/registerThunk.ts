@@ -14,8 +14,8 @@ export const registerThunk = createAsyncThunk<
 
     return response.data;
   } catch (error) {
-    if (error instanceof AxiosError && error.status === 400) {
-      return rejectWithValue(i18n.t("apiError.emailExists"));
+    if (error instanceof AxiosError) {
+      return rejectWithValue(error.response?.data.details.join(", "));
     }
 
     return rejectWithValue(i18n.t("apiError.unknownError"));

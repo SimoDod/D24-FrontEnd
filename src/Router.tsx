@@ -55,7 +55,7 @@ const router = createBrowserRouter(
           element={<ReleaseNotesPage />}
         />
         <Route
-          path={routePaths.learningReport.path}
+          path={routePaths.learningReport.reportNumber}
           element={<LearningReportPage />}
         />
         <Route
@@ -73,6 +73,10 @@ const router = createBrowserRouter(
       </Route>
 
       {/* Catch-all for undefined routes */}
+      <Route
+        path={routePaths.notFound.path}
+        element={<ErrorFallback errorMessage="wrongPath" />}
+      />
       <Route path="*" element={<ErrorFallback errorMessage="wrongPath" />} />
     </>
   )

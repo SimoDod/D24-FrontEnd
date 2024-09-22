@@ -11,8 +11,6 @@ export type ReportPermissions = {
   CanUnsubmit: boolean;
   CanReview: boolean;
   CanEdit: boolean;
-  CanAddEditActions: boolean;
-  CanSubmitActions: boolean;
   CanClose: boolean;
   CanDelete: boolean;
   CanEditClose: boolean;
@@ -64,18 +62,12 @@ export type Report = {
   soNumber: string;
   asmlOffice: string;
   machineNumber: string;
-  timestampCraftsmanship: string;
+  timestampCraftsmanship: string | null;
   hoursDelay: string;
   lhm: string;
-  coachProcedure: string;
   techBucket: string;
   machineFamily: string;
   description: string;
-  dateCreated: string;
-  dateLastUpdated: string;
-  dateSubmitted: string;
-  dateReviewed: string;
-  dateClosed: string | null;
   mealTime: boolean;
   continuousWork: boolean;
   experienced: boolean;
@@ -89,7 +81,6 @@ export type Report = {
   managerInfluence: string;
   status: ReportStatus;
   archived: boolean;
-  userMail: string;
   permissions: ReportPermissions;
   answers: Answer[];
   reportNumber: string;
@@ -100,7 +91,6 @@ export type Report = {
   filePathThird: string | null;
   downloadFileUrlSecond: string | null;
   downloadFileUrlThird: string | null;
-  segment_id: number;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [key: string]: any;
 };

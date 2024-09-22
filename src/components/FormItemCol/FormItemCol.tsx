@@ -21,7 +21,7 @@ type Props = {
 
 const FormItemCol = ({
   children,
-  span = { xs: 24, sm: 24, md: 12, lg: 12, xl: 6 },
+  span = { xs: 24, sm: 24, md: 24, lg: 12, xl: 12, xxl: 6 },
   label,
   name,
   labelCol = 24,

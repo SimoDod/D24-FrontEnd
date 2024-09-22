@@ -1,33 +1,30 @@
 @import "../../theme/sizes";
 
-.content {
-  min-height: calc(100vh - $size * 12);
-  padding: 0 $size6x;
-}
-
-.sider {
-  position: fixed;
-  overflow-y: auto;
-  inset-inline-start: 0;
-  top: 0;
-  bottom: 0;
-  scrollbar-width: thin;
-  scrollbar-color: unset;
+.header {
+  display: flex;
+  align-items: end;
+  border-radius: $size2x;
+  background-color: var(--ant-color-neutral-1);
+  height: $size * 20;
 
   .menu {
-    margin-top: $size * 10;
-    :global {
-      .ant-menu-item {
-        margin-bottom: $size2x;
-        display: flex;
-        justify-content: center;
-      }
+    flex: 1;
+    min-width: 0;
+    justify-content: center;
 
-      .ant-menu-item-icon {
-        margin-right: $size2x;
-      }
+    .overflowIcon {
+      font-size: $size4x;
+      padding: $size4x;
     }
   }
+
+  .headerImage {
+    max-width: $size * 40;
+  }
+}
+
+.content {
+  min-height: calc(100vh - ($size * 32));
 }
 
 .footer {

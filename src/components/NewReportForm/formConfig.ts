@@ -1,4 +1,4 @@
-import i18n from "../../localization/i18n";
+/* import i18n from "../../localization/i18n"; */
 import { Report, ReportStatus } from "./types";
 import * as Yup from "yup";
 
@@ -10,17 +10,11 @@ export const reportInitialValues: Report = {
   lhm: "",
   asmlOffice: "",
   machineNumber: "",
-  timestampCraftsmanship: "",
+  timestampCraftsmanship: null,
   hoursDelay: "",
-  coachProcedure: "",
   techBucket: "",
   machineFamily: "",
   description: "",
-  dateCreated: "",
-  dateLastUpdated: "",
-  dateSubmitted: "",
-  dateReviewed: "",
-  dateClosed: null,
   mealTime: false,
   continuousWork: false,
   experienced: false,
@@ -34,14 +28,11 @@ export const reportInitialValues: Report = {
   managerInfluence: "",
   status: ReportStatus.NEW,
   archived: false,
-  userMail: "",
   permissions: {
     CanSubmit: false,
     CanUnsubmit: false,
     CanReview: false,
     CanEdit: false,
-    CanAddEditActions: false,
-    CanSubmitActions: false,
     CanClose: false,
     CanDelete: false,
     CanEditClose: false,
@@ -67,18 +58,12 @@ export const reportValidationSchema = Yup.object().shape({
   soNumber: Yup.string(),
   asmlOffice: Yup.string(),
   machineNumber: Yup.string(),
-  timestampCraftsmanship: Yup.string(),
+  timestampCraftsmanship: Yup.string().nullable(),
   hoursDelay: Yup.string(),
-  LHM: Yup.string(),
-  coachProcedure: Yup.string(),
+  lhm: Yup.string(),
   techBucket: Yup.string(),
   machineFamily: Yup.string(),
   description: Yup.string(),
-  dateCreated: Yup.string(),
-  dateLastUpdated: Yup.string(),
-  dateSubmitted: Yup.string(),
-  dateReviewed: Yup.string(),
-  dateClosed: Yup.string().nullable(),
   mealTime: Yup.string(),
   continuousWork: Yup.string(),
   experienced: Yup.string(),
@@ -92,14 +77,11 @@ export const reportValidationSchema = Yup.object().shape({
   managerInfluence: Yup.string(),
   status: Yup.string(),
   archived: Yup.boolean(),
-  userMail: Yup.string().email(),
   permissions: Yup.object().shape({
     CanSubmit: Yup.boolean(),
     CanUnsubmit: Yup.boolean(),
     CanReview: Yup.boolean(),
     CanEdit: Yup.boolean(),
-    CanAddEditActions: Yup.boolean(),
-    CanSubmitActions: Yup.boolean(),
     CanClose: Yup.boolean(),
     CanDelete: Yup.boolean(),
     CanEditClose: Yup.boolean(),
@@ -112,17 +94,6 @@ export const reportValidationSchema = Yup.object().shape({
       reportId: Yup.number(),
       answer: Yup.string(),
       updateNumber: Yup.number(),
-    })
-  ),
-  actions: Yup.array().of(
-    Yup.object().shape({
-      id: Yup.number(),
-      summary: Yup.string(),
-      details: Yup.string(),
-      status: Yup.string(),
-      duedate: Yup.string(),
-      lastupdated: Yup.string(),
-      owner: Yup.string(),
     })
   ),
 });

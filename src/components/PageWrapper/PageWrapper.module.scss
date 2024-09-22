@@ -1,12 +1,13 @@
 @import "../../theme/sizes";
 
-.header {
-  display: flex;
-  justify-content: space-between;
-  padding: $size;
-  margin-bottom: $size3x;
+.page {
+  padding: 0 $size8x;
 
-  .headerSider {
-    flex-direction: row;
+  .header {
+    padding: $size5x;
+  }
+
+  @media (max-width: 768px) {
+    padding: 0 $size;
   }
 }

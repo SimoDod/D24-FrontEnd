@@ -14,8 +14,8 @@ export const loginThunk = createAsyncThunk<
 
     return response.data;
   } catch (error) {
-    if (error instanceof AxiosError && error.status === 401) {
-      return rejectWithValue(i18n.t("apiError.invalidCredentials"));
+    if (error instanceof AxiosError) {
+      return rejectWithValue(error.response?.data.details.join(", "));
     }
 
     return rejectWithValue(i18n.t("apiError.unknownError"));

@@ -1,9 +1,12 @@
 import { createSlice, isAnyOf } from "@reduxjs/toolkit";
-import { notification } from "antd";
+import { message, notification } from "antd";
 import { fetchUserThunk } from "../thunks/fetchUserThunk";
 import { loginThunk } from "../thunks/loginThunk";
 import { registerThunk } from "../thunks/registerThunk";
 import i18n from "../../localization/i18n";
+import { postReportThunk } from "../thunks/postReportThunk";
+import { fetchReportThunk } from "../thunks/fetchReportThunk";
+import { fetchAllLearningReports } from "../thunks/fetchAllLearningReports";
 
 const notificationSlice = createSlice({
   name: "notification",
@@ -21,10 +24,13 @@ const notificationSlice = createSlice({
       isAnyOf(
         fetchUserThunk.rejected,
         loginThunk.rejected,
-        registerThunk.rejected
+        registerThunk.rejected,
+        postReportThunk.rejected,
+        fetchReportThunk.rejected,
+        fetchAllLearningReports.rejected
       ),
       (_, action) => {
-        notification.warning({ message: action.payload });
+        message.warning(action.payload);
       }
     );
   },

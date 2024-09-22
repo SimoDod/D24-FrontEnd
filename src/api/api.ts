@@ -22,7 +22,7 @@ api.interceptors.response.use(
   async (error: AxiosError) => {
     if (error.response?.status === 403) {
       clearAuthSession();
-      return Promise.reject(error);
     }
+    return Promise.reject(error);
   }
 );

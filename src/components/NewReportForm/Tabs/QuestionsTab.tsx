@@ -1,5 +1,4 @@
 import { Row, Switch, Table, Typography } from "antd";
-
 import classes from "./NewReportFormTabs.module.scss";
 import FormItemCol from "../../FormItemCol/FormItemCol";
 import { QuestionType, Report } from "../types";
@@ -25,7 +24,7 @@ const QuestionsTab = () => {
 
   return (
     <>
-      <Row justify={"space-around"} gutter={[16, 16]}>
+      <Row justify="space-around" gutter={[16, 16]}>
         {binaryQuestions.map(({ text, name }) => (
           <FormItemCol
             key={name}

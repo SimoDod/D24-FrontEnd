@@ -8,7 +8,8 @@ type Props = {
   type?: ButtonType;
   color?: "red" | "blue" | "green";
   value?: string;
-  onClick?: MouseEventHandler<HTMLButtonElement> ;
+  disabled?: boolean;
+  onClick?: MouseEventHandler<HTMLButtonElement>;
 } & PropsWithChildren;
 
 const ColorButton = ({
@@ -16,6 +17,7 @@ const ColorButton = ({
   color = "blue",
   type = "default",
   value,
+  disabled = false,
   onClick,
 }: Props) => (
   <Button
@@ -23,6 +25,7 @@ const ColorButton = ({
     className={clsx(classes[color])}
     type={type}
     onClick={onClick}
+    disabled={disabled}
   >
     {children}
   </Button>

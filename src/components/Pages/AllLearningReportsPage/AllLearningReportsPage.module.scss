@@ -1,0 +1,11 @@
+@import "../../../theme/sizes";
+
+.table {
+  margin-top: 10%;
+
+  :global {
+    .anticon {
+      font-size: $size3x !important;
+    }
+  }
+}

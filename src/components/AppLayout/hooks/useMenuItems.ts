@@ -11,71 +11,55 @@ import { ItemType } from "antd/es/menu/interface";
 import { routePaths } from "../../../routerConfig";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
+import { menuItemKey } from "../constants";
 
-const useMenuItems = (collapsed: boolean) => {
+const useMenuItems = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
 
+  const navigateAndSetMenuItemKey = (keyPath: string) => {
+    navigate(keyPath);
+    localStorage.setItem(menuItemKey, keyPath);
+  };
+
   const menuItems: ItemType[] = [
     {
-      type: "group",
-      label: collapsed ? null : t("sider.home"),
-      children: [
-        {
-          key: routePaths.home.path,
-          icon: createElement(HomeFilled),
-          label: collapsed ? null : t(routePaths.home.label),
-          onClick: () => navigate(routePaths.home.path),
-        },
-      ],
+      key: routePaths.home.path,
+      icon: createElement(HomeFilled),
+      label: t(routePaths.home.label),
+      onClick: () => navigateAndSetMenuItemKey(routePaths.home.path),
     },
     {
-      type: "group",
-      label: collapsed ? null : t("sider.releases"),
-      children: [
-        {
-          key: routePaths.releaseNotes.path,
-          icon: createElement(InfoCircleFilled),
-          label: collapsed ? null : t(routePaths.releaseNotes.label),
-          onClick: () => navigate(routePaths.releaseNotes.path),
-        },
-      ],
+      key: routePaths.releaseNotes.path,
+      icon: createElement(InfoCircleFilled),
+      label: t(routePaths.releaseNotes.label),
+      onClick: () => navigateAndSetMenuItemKey(routePaths.releaseNotes.path),
     },
     {
-      type: "group",
-      label: collapsed ? null : t("sider.reports"),
-      children: [
-        {
-          key: routePaths.learningReport.path,
-          icon: createElement(SnippetsFilled),
-          label: collapsed ? null : t(routePaths.learningReport.label),
-          onClick: () => navigate(routePaths.learningReport.pathNew),
-        },
-        {
-          key: routePaths.allLearningReports.path,
-          icon: createElement(FolderOpenFilled),
-          label: collapsed ? null : t(routePaths.allLearningReports.label),
-          onClick: () => navigate(routePaths.allLearningReports.path),
-        },
-      ],
+      key: routePaths.learningReport.pathNew,
+      icon: createElement(SnippetsFilled),
+      label: t(routePaths.learningReport.label),
+      onClick: () =>
+        navigateAndSetMenuItemKey(routePaths.learningReport.pathNew),
     },
     {
-      type: "group",
-      label: collapsed ? null : t("sider.administration"),
-      children: [
-        {
-          key: routePaths.administrators.path,
-          icon: createElement(AppstoreOutlined),
-          label: collapsed ? null : t(routePaths.administrators.label),
-          onClick: () => navigate(routePaths.administrators.path),
-        },
-        {
-          key: routePaths.maintenance.path,
-          icon: createElement(EditOutlined),
-          label: collapsed ? null : t(routePaths.maintenance.label),
-          onClick: () => navigate(routePaths.maintenance.path),
-        },
-      ],
+      key: routePaths.allLearningReports.path,
+      icon: createElement(FolderOpenFilled),
+      label: t(routePaths.allLearningReports.label),
+      onClick: () =>
+        navigateAndSetMenuItemKey(routePaths.allLearningReports.path),
+    },
+    {
+      key: routePaths.administrators.path,
+      icon: createElement(AppstoreOutlined),
+      label: t(routePaths.administrators.label),
+      onClick: () => navigateAndSetMenuItemKey(routePaths.administrators.path),
+    },
+    {
+      key: routePaths.maintenance.path,
+      icon: createElement(EditOutlined),
+      label: t(routePaths.maintenance.label),
+      onClick: () => navigateAndSetMenuItemKey(routePaths.maintenance.path),
     },
   ];
 

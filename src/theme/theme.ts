@@ -19,8 +19,9 @@ export const generateTheme = (
       headerColor: token.colorPrimary1,
     },
     Menu: {
-      itemHoverBg: token.colorPrimary10,
-      itemHoverColor: token.colorNeutral4,
+      itemHoverColor: token.colorPrimary7,
+      horizontalItemSelectedColor: token.colorPrimary8,
+      iconMarginInlineEnd: sizes.size,
     },
     Input: {
       paddingBlock: 10,
@@ -67,8 +68,14 @@ export const generateTheme = (
       colorPrimary: token.colorPrimary7,
     },
     Statistic: {
-      contentFontSize: sizes.size6x
-    }
+      contentFontSize: sizes.size6x,
+    },
+    Progress: {
+      defaultColor: token.colorPrimary7,
+    },
+    Tag: {
+      fontSize: sizes.size5x,
+    },
   },
   algorithm,
   cssVar: true,

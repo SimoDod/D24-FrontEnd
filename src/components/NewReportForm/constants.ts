@@ -17,3 +17,5 @@ export const humanFactorInputs = [
   { placeholder: "humanFactorTab.teamInfluence", name: "teamInfluence" },
   { placeholder: "humanFactorTab.managerInfluence", name: "managerInfluence" },
 ];
+
+export const reportTabKey = "reportTabKey";

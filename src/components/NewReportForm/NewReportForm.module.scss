@@ -1,4 +1,4 @@
-@import "../../../theme//sizes";
+@import "../../theme/sizes";
 
 .container {
   background-color: var(--ant-color-neutral-1);
@@ -16,4 +16,9 @@
   padding-top: $size * 10;
   padding-bottom: $size * 20;
   color: var(--ant-color-primary-10) !important;
+}
+
+.spinner {
+  padding: 1px;
+  width: 10%;
 }

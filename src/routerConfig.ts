@@ -5,7 +5,8 @@ export const routePaths = {
   releaseNotes: { label: "sider.releaseNotes", path: "/release-notes" },
   learningReport: {
     label: "sider.learningReport",
-    path: "/learning-report/:reportNumber",
+    path: "/learning-report/",
+    reportNumber: "/learning-report/:reportNumber",
     pathNew: "/learning-report/new",
     new: "new",
   },
@@ -20,5 +21,8 @@ export const routePaths = {
   maintenance: {
     label: "sider.maintenance",
     path: "/maintenance",
+  },
+  notFound: {
+    path: "/404",
   },
 } as const;
