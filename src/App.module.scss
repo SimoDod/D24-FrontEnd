@@ -1,0 +1,43 @@
+@import "../src/theme/sizes";
+
+// Global classes from ant-design
+// Which the theme provider does not supports natively
+// Or are not loading properly from antd by some bug in current version
+.global {
+  :global {
+    .ant-select-arrow {
+      bottom: $size5x;
+    }
+
+    .ant-btn-sm {
+      padding: $size $size3x;
+    }
+
+    .ant-input-group-addon {
+      .ant-btn {
+        min-height: $size * 10;
+        min-width: $size8x;
+      }
+    }
+
+    .ant-message-notice {
+      font-size: $size4x;
+    }
+
+    .ant-tag {
+      padding: 2px $size3x;
+    }
+
+    .ant-pagination {
+      .ant-pagination-item-active,
+      .ant-pagination-next,
+      .ant-pagination-item,
+      .ant-pagination-prev {
+        display: flex;
+        align-items: center;
+        padding: 0 $size2x;
+        height: $size7x !important;
+      }
+    }
+  }
+}

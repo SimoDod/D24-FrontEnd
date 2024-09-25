@@ -1,0 +1,15 @@
+@import "../../../theme/sizes";
+
+.container {
+  width: 100%;
+  max-width: $size * 350;
+  margin: 0 auto;
+  overflow-x: auto;
+  .table {
+    :global {
+      .anticon {
+        font-size: $size3x !important;
+      }
+    }
+  }
+}

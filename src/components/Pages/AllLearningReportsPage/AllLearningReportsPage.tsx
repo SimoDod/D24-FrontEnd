@@ -3,16 +3,20 @@ import { routePaths } from "../../../routerConfig";
 import PageWrapper from "../../PageWrapper/PageWrapper";
 import { fetchAllLearningReports } from "../../../store/thunks/fetchAllLearningReports";
 import { Table } from "antd";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../store/store";
-import { useLearningReportColumns } from "../hooks/useLearningReportsColumn";
 import classes from "./AllLearningReportsPage.module.scss";
+import { useLearningReportsTable } from "../hooks/useLearningReportsTable";
+import TableSearchHeader from "../../TableSearchHeader/TableSearchHeader";
+import { pageSizes } from "../../../utils/constants";
 
 const AllLearningReportsPage = () => {
   const { t } = useTranslation();
   const { allReports, isLoading } = useAppSelector((state) => state.report);
+  const [pageSize, setPageSize] = useState(pageSizes.small);
   const dispatch = useAppDispatch();
-  const columns = useLearningReportColumns();
+  const { columns, filteredTableData, setSearchTerm } =
+    useLearningReportsTable(allReports);
 
   useEffect(() => {
     dispatch(fetchAllLearningReports());
@@ -20,13 +24,19 @@ const AllLearningReportsPage = () => {
 
   return (
     <PageWrapper title={t(routePaths.allLearningReports.label)}>
+      <TableSearchHeader
+        handleSearch={setSearchTerm}
+        handlePageSize={setPageSize}
+        pageSize={pageSize}
+      />
+
       <Table
         className={classes.table}
-        dataSource={allReports}
+        dataSource={filteredTableData}
         columns={columns}
         rowKey="reportNumber"
         bordered
-        pagination={{ pageSize: 10 }}
+        pagination={{ pageSize }}
         loading={isLoading}
         scroll={{ x: "max-content" }}
       />

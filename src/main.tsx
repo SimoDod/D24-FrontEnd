@@ -1,7 +1,6 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App.tsx";
-import "./index.module.scss";
 import "./localization/i18n";
 import "antd/dist/reset.css";
 import { ThemeContextProvider } from "./context/ThemeContextProvider.tsx";

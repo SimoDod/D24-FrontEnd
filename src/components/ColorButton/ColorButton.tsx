@@ -6,7 +6,7 @@ import classes from "./ColorButton.module.scss";
 
 type Props = {
   type?: ButtonType;
-  color?: "red" | "blue" | "green";
+  color?: "red" | "blue" | "green" | "orange";
   value?: string;
   disabled?: boolean;
   onClick?: MouseEventHandler<HTMLButtonElement>;

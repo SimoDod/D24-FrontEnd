@@ -11,6 +11,8 @@ import { useAppDispatch } from "../../../store/store";
 import { loginThunk } from "../../../store/thunks/loginThunk";
 import { LoginData } from "../../../types/User";
 import { showFullScreenLoader } from "../../../store/slices/loaderSlice";
+import { menuItemKey } from "../../AppLayout/constants";
+import { routePaths } from "../../../routerConfig";
 
 const { Title, Text } = Typography;
 
@@ -29,6 +31,7 @@ const LoginPage = () => {
   const dispatch = useAppDispatch();
 
   const handleLogin = async (loginData: LoginData) => {
+    localStorage.setItem(menuItemKey, routePaths.home.path);
     dispatch(showFullScreenLoader(true));
     await dispatch(loginThunk(loginData));
     dispatch(showFullScreenLoader(false));

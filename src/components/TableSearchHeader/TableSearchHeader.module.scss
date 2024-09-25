@@ -1,0 +1,13 @@
+@import "../../theme/sizes";
+
+.tableOptions {
+  padding: $size4x;
+
+  .pageSize {
+    width: $size * 18;
+  }
+
+  .search {
+    width: $size * 80;
+  }
+}

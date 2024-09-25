@@ -7,13 +7,13 @@ import AppLayout from "./components/AppLayout/AppLayout";
 import ReleaseNotesPage from "./components/Pages/ReleaseNotesPage/ReleaseNotesPage";
 import LearningReportPage from "./components/Pages/LearningReportPage/LearningReportPage";
 import AllLearningReportsPage from "./components/Pages/AllLearningReportsPage/AllLearningReportsPage";
-import AdministratorPage from "./components/Pages/AdministratorsPage/AdministratorPage";
 import MaintenancePage from "./components/Pages/MaintenancePage/MaintenancePage";
 import LoginPage from "./components/Pages/AuthPages/LoginPage";
 import GuestGuard from "./components/AuthControl/GuestGuard";
 import ErrorBoundary from "antd/es/alert/ErrorBoundary";
 import AuthGuard from "./components/AuthControl/AuthGuard";
 import RegisterPage from "./components/Pages/AuthPages/RegisterPage";
+import AdminsPage from "./components/Pages/AdminsPage/AdminsPage";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -63,8 +63,8 @@ const router = createBrowserRouter(
           element={<AllLearningReportsPage />}
         />
         <Route
-          path={routePaths.administrators.path}
-          element={<AdministratorPage />}
+          path={routePaths.admins.path}
+          element={<AdminsPage />}
         />
         <Route
           path={routePaths.maintenance.path}

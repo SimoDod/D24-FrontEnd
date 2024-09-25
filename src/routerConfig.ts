@@ -14,9 +14,9 @@ export const routePaths = {
     label: "sider.allLearningReports",
     path: "/all-learning-reports",
   },
-  administrators: {
-    label: "sider.administrators",
-    path: "/administrators",
+  admins: {
+    label: "sider.admins",
+    path: "/admins",
   },
   maintenance: {
     label: "sider.maintenance",

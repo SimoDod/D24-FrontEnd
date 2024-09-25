@@ -22,7 +22,7 @@ export const en = {
       releaseNotes: "Release Notes",
       learningReport: "Learning Report",
       allLearningReports: "All Learning Reports",
-      administrators: "Administrators",
+      admins: "Admins",
       maintenance: "Maintenance",
       reports: "Reports",
       releases: "Releases",
@@ -63,6 +63,11 @@ export const en = {
       description: "Description",
       multipleEmailsTags: "Type email and press enter",
       lhm: "LHM",
+    },
+    adminsPage: {
+      user: "User",
+      centralAdmin: "Central Admin",
+      localAdmin: "Local Admin",
     },
     questionsTab: {
       mealTime: "Time for meal",

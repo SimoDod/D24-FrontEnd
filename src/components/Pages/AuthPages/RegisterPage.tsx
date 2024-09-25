@@ -11,6 +11,8 @@ import { registerThunk } from "../../../store/thunks/registerThunk";
 import { RegisterData } from "../../../types/User";
 import { useAppDispatch } from "../../../store/store";
 import { showFullScreenLoader } from "../../../store/slices/loaderSlice";
+import { routePaths } from "../../../routerConfig";
+import { menuItemKey } from "../../AppLayout/constants";
 
 const { Title, Text } = Typography;
 
@@ -33,6 +35,7 @@ const RegisterPage = () => {
   const dispatch = useAppDispatch();
 
   const handleRegister = async (registerData: RegisterData) => {
+    localStorage.setItem(menuItemKey, routePaths.home.path);
     dispatch(showFullScreenLoader(true));
     await dispatch(registerThunk(registerData));
     dispatch(showFullScreenLoader(false));

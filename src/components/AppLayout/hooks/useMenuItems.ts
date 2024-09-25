@@ -1,10 +1,10 @@
 import {
   AppstoreOutlined,
-  HomeFilled,
-  InfoCircleFilled,
-  SnippetsFilled,
-  FolderOpenFilled,
   EditOutlined,
+  HomeOutlined,
+  InfoCircleOutlined,
+  SnippetsTwoTone,
+  FolderOpenTwoTone,
 } from "@ant-design/icons";
 import { createElement } from "react";
 import { ItemType } from "antd/es/menu/interface";
@@ -25,35 +25,35 @@ const useMenuItems = () => {
   const menuItems: ItemType[] = [
     {
       key: routePaths.home.path,
-      icon: createElement(HomeFilled),
+      icon: createElement(HomeOutlined),
       label: t(routePaths.home.label),
       onClick: () => navigateAndSetMenuItemKey(routePaths.home.path),
     },
     {
       key: routePaths.releaseNotes.path,
-      icon: createElement(InfoCircleFilled),
+      icon: createElement(InfoCircleOutlined),
       label: t(routePaths.releaseNotes.label),
       onClick: () => navigateAndSetMenuItemKey(routePaths.releaseNotes.path),
     },
     {
       key: routePaths.learningReport.pathNew,
-      icon: createElement(SnippetsFilled),
+      icon: createElement(SnippetsTwoTone),
       label: t(routePaths.learningReport.label),
       onClick: () =>
         navigateAndSetMenuItemKey(routePaths.learningReport.pathNew),
     },
     {
       key: routePaths.allLearningReports.path,
-      icon: createElement(FolderOpenFilled),
+      icon: createElement(FolderOpenTwoTone),
       label: t(routePaths.allLearningReports.label),
       onClick: () =>
         navigateAndSetMenuItemKey(routePaths.allLearningReports.path),
     },
     {
-      key: routePaths.administrators.path,
+      key: routePaths.admins.path,
       icon: createElement(AppstoreOutlined),
-      label: t(routePaths.administrators.label),
-      onClick: () => navigateAndSetMenuItemKey(routePaths.administrators.path),
+      label: t(routePaths.admins.label),
+      onClick: () => navigateAndSetMenuItemKey(routePaths.admins.path),
     },
     {
       key: routePaths.maintenance.path,

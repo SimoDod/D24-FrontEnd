@@ -9,25 +9,27 @@ import { dateFormats } from "../../DatePicker/constants";
 import { reportTabKey } from "../../NewReportForm/constants";
 import { NewReportTabKeys } from "../LearningReportPage/constants";
 import { menuItemKey } from "../../AppLayout/constants";
+import { useState } from "react";
 
-export const useLearningReportColumns = () => {
+const getStatusButtonColor = (status: ReportStatus) => {
+  switch (status) {
+    case ReportStatus.NEW:
+      return "green";
+    case ReportStatus.SUBMITTED:
+      return "blue";
+    case ReportStatus.REVIEWED:
+      return "magenta";
+    case ReportStatus.CLOSED:
+      return "red";
+    default:
+      return "default";
+  }
+};
+
+export const useLearningReportsTable = (data: Report[]) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
-
-  const getStatusButtonColor = (status: ReportStatus): string => {
-    switch (status) {
-      case ReportStatus.NEW:
-        return "green";
-      case ReportStatus.SUBMITTED:
-        return "blue";
-      case ReportStatus.REVIEWED:
-        return "magenta";
-      case ReportStatus.CLOSED:
-        return "red";
-      default:
-        return "default";
-    }
-  };
+  const [searchTerm, setSearchTerm] = useState("");
 
   const columns: TableProps<Report>["columns"] = [
     //TODO translate
@@ -129,5 +131,14 @@ export const useLearningReportColumns = () => {
     },
   ];
 
-  return columns;
+  const filteredTableData = data.filter(
+    (report) =>
+      report.reportNumber.toString().includes(searchTerm) ||
+      report.segment.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      report.soNumber.toString().includes(searchTerm) ||
+      report.asmlOffice.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      report.status.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  return { filteredTableData, columns, setSearchTerm };
 };
