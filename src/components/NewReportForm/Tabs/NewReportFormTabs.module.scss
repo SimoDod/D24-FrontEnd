@@ -12,10 +12,10 @@
 
 .paragraph {
   text-align: center;
+}
 
-  .switch {
-    width: 80%;
-  }
+.switch {
+  width: $size * 22;
 }
 
 .colorWarning {

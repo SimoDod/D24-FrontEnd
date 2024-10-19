@@ -28,7 +28,6 @@ const router = createBrowserRouter(
           </GuestGuard>
         }
       />
-
       <Route
         path={routePaths.register.path}
         element={
@@ -39,7 +38,6 @@ const router = createBrowserRouter(
           </GuestGuard>
         }
       />
-
       <Route
         element={
           <AuthGuard>

@@ -2,7 +2,7 @@ import { ExtendedAliasToken } from "../types";
 
 const darkToken: ExtendedAliasToken = {
   fontFamily: "Roboto",
-  fontSize: "16px",
+  fontSize: 16 as never,
   // primary
   colorPrimary1: "#111d2c",
   colorPrimary2: "#112a45",

@@ -37,10 +37,10 @@ export enum Segments {
   SEGMENT3 = "Segment 3",
 }
 
-export enum AsmlOffices {
-  asmlOffice1 = "ASML Office 1",
-  asmlOffice2 = "ASML Office 2",
-  asmlOffice3 = "ASML Office 3",
+export enum Offices {
+  office1 = "Office 1",
+  office2 = "Office 2",
+  office3 = "Office 3",
 }
 
 export enum TechBuckets {
@@ -59,12 +59,10 @@ export type Report = {
   id: number;
   reviewersEmail: string[];
   segment: string;
-  soNumber: string;
-  asmlOffice: string;
+  office: string;
   machineNumber: string;
   timestampCraftsmanship: string | null;
   hoursDelay: string;
-  lhm: string;
   techBucket: string;
   machineFamily: string;
   description: string;
@@ -100,3 +98,10 @@ export type QuestionType = {
   question: string;
   questionGroup: string;
 };
+
+export enum NewReportTabKeys {
+  GENERAL_INFO = "learningReportPage.generalInfo",
+  QUESTIONS = "learningReportPage.questions",
+  HUMAN_FACTOR = "learningReportPage.humanFactor",
+  ATTACHMENTS = "learningReportPage.attachments",
+}

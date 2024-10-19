@@ -21,18 +21,16 @@ export const generateTheme = (
     Menu: {
       itemHoverColor: token.colorPrimary7,
       horizontalItemSelectedColor: token.colorPrimary8,
-      iconMarginInlineEnd: sizes.size,
     },
     Input: {
-      paddingBlock: 10,
+      controlHeight: sizes.size * 9,
     },
     Select: {
-      controlHeight: sizes.size * 10,
-      optionPadding: sizes.size3x,
+      controlHeight: sizes.size * 9,
     },
     Button: {
-      paddingBlock: sizes.size4x,
       colorBgBase: token.colorPrimary10,
+      controlHeight: sizes.size * 9,
     },
     Typography: {
       titleMarginTop: 0,
@@ -49,32 +47,19 @@ export const generateTheme = (
       itemSelectedColor: token.colorPrimary7,
       itemHoverColor: token.colorPrimary8,
     },
-    Card: {
-      headerHeight: sizes.size * 12,
-    },
     Radio: {
       radioSize: sizes.size6x,
       dotSize: sizes.size2x,
       colorPrimary: token.colorPrimary7,
     },
     Switch: {
-      handleSize: sizes.size5x,
-      innerMaxMargin: sizes.size4x,
-      trackHeight: sizes.size6x,
-      trackMinWidth: sizes.size * 12,
       colorPrimary: token.colorPrimary7,
     },
     DatePicker: {
       colorPrimary: token.colorPrimary7,
     },
-    Statistic: {
-      contentFontSize: sizes.size6x,
-    },
     Progress: {
       defaultColor: token.colorPrimary7,
-    },
-    Tag: {
-      fontSize: sizes.size5x,
     },
   },
   algorithm,

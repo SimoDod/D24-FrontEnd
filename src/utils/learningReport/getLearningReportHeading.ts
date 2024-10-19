@@ -1,14 +1,15 @@
-import i18n from "../../localization/i18n";
+import { TFunction } from "i18next";
 import { routePaths } from "../../routerConfig";
 
 const getLearningReportHeading = (
-  reportNumber: number | string | undefined
+  reportNumber: number | string | undefined,
+  t: TFunction
 ) => {
   const isNewReport = reportNumber === routePaths.learningReport.new;
 
   return isNewReport
-    ? `${i18n.t("commonWords.new")} ${i18n.t(routePaths.learningReport.label)}`
-    : `${i18n.t(routePaths.learningReport.label)}: ${reportNumber}`;
+    ? `${t("commonWords.new")} ${t(routePaths.learningReport.label)}`
+    : `${t(routePaths.learningReport.label)}: ${reportNumber}`;
 };
 
 export default getLearningReportHeading;

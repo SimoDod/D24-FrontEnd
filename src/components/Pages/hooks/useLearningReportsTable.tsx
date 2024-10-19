@@ -3,11 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { routePaths } from "../../../routerConfig";
 import ColorButton from "../../ColorButton/ColorButton";
-import { Report, ReportStatus } from "../../NewReportForm/types";
+import { NewReportTabKeys, Report, ReportStatus } from "../../NewReportForm/types";
 import { format } from "date-fns";
 import { dateFormats } from "../../DatePicker/constants";
 import { reportTabKey } from "../../NewReportForm/constants";
-import { NewReportTabKeys } from "../LearningReportPage/constants";
 import { menuItemKey } from "../../AppLayout/constants";
 import { useState } from "react";
 
@@ -49,17 +48,9 @@ export const useLearningReportsTable = (data: Report[]) => {
       sorter: (a, b) => a.segment.localeCompare(b.segment),
     },
     {
-      title: t("SO Number"),
-      dataIndex: "soNumber",
-      key: "soNumber",
-      align: "center",
-      width: 130,
-      sorter: (a, b) => Number(a.soNumber) - Number(b.soNumber),
-    },
-    {
-      title: t("ASML Office"),
-      dataIndex: "asmlOffice",
-      key: "asmlOffice",
+      title: t("Office"),
+      dataIndex: "office",
+      key: "office",
       align: "center",
       sorter: (a, b) => a.segment.localeCompare(b.segment),
     },
@@ -135,8 +126,7 @@ export const useLearningReportsTable = (data: Report[]) => {
     (report) =>
       report.reportNumber.toString().includes(searchTerm) ||
       report.segment.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      report.soNumber.toString().includes(searchTerm) ||
-      report.asmlOffice.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      report.office.toLowerCase().includes(searchTerm.toLowerCase()) ||
       report.status.toLowerCase().includes(searchTerm.toLowerCase())
   );
 

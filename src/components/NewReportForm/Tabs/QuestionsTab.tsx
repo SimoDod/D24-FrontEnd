@@ -1,4 +1,4 @@
-import { Row, Switch, Table, Typography } from "antd";
+import { Flex, Row, Switch, Table, Typography } from "antd";
 import classes from "./NewReportFormTabs.module.scss";
 import FormItemCol from "../../FormItemCol/FormItemCol";
 import { QuestionType, Report } from "../types";
@@ -10,21 +10,21 @@ import { questionsData } from "../../../data/questionsData";
 
 const { Paragraph } = Typography;
 
+const getRowClassName = (record: QuestionType, values: Report) => {
+  const selectedAnswer = values.answers.find(
+    (answer) => answer.questionNumber === record.id
+  );
+  return selectedAnswer ? classes.selectedRow : "";
+};
+
 const QuestionsTab = () => {
   const { values, setFieldValue } = useFormikContext<Report>();
   const columns = useQuestionsColumns(values, setFieldValue);
   const { t } = useTranslation();
 
-  const getRowClassName = (record: QuestionType) => {
-    const selectedAnswer = values.answers.find(
-      (answer) => answer.questionNumber === record.id
-    );
-    return selectedAnswer ? classes.selectedRow : "";
-  };
-
   return (
     <>
-      <Row justify="space-around" gutter={[16, 16]}>
+      <Row gutter={[16, 16]}>
         {binaryQuestions.map(({ text, name }) => (
           <FormItemCol
             key={name}
@@ -34,6 +34,8 @@ const QuestionsTab = () => {
             <Paragraph className={classes.paragraph}>
               {t(text)}
               {": "}
+            </Paragraph>
+            <Flex justify="center">
               <Switch
                 className={classes.switch}
                 checkedChildren="Yes"
@@ -41,18 +43,20 @@ const QuestionsTab = () => {
                 onChange={(v) => setFieldValue(name, v)}
                 checked={values[name]}
               />
-            </Paragraph>
+            </Flex>
           </FormItemCol>
         ))}
       </Row>
-
       <Table
         columns={columns}
-        dataSource={questionsData}
+        dataSource={questionsData.map((curQuestion) => ({
+          ...curQuestion,
+          question: t(curQuestion.question),
+        }))}
         rowKey="id"
         scroll={{ x: 700, y: 600 }}
         pagination={false}
-        rowClassName={getRowClassName}
+        rowClassName={(record) => getRowClassName(record, values)}
       />
     </>
   );

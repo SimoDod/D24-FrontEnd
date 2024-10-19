@@ -2,7 +2,6 @@ import { Radio, Typography } from "antd";
 import type { TableProps } from "antd";
 import { QuestionType, Report, Answer, AnswerStatus } from "../types";
 import { useTranslation } from "react-i18next";
-
 const { Text } = Typography;
 
 const useQuestionsColumns = (

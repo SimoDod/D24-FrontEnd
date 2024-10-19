@@ -1,11 +1,12 @@
 export const binaryQuestions = [
-  { text: "questionsTab.mealTime", name: "mealTime" },
-  { text: "questionsTab.continuousWork", name: "continuousWork" },
-  { text: "questionsTab.overTwoYears", name: "experienced" },
-  { text: "questionsTab.fullyTrained", name: "gotTraining" },
-  { text: "questionsTab.othersIntefering", name: "customerInterference" },
-  { text: "questionsTab.workAlone", name: "workAlone" },
+  { text: "questionsTab.breakDuringShift", name: "breakDuringShift" },
+  { text: "questionsTab.nonStopWork", name: "nonStopWork" },
+  { text: "questionsTab.longTermEmployee", name: "longTermEmployee" },
+  { text: "questionsTab.completedTraining", name: "completedTraining" },
+  { text: "questionsTab.externalDistraction", name: "externalDistraction" },
+  { text: "questionsTab.worksIndependently", name: "worksIndependently" },
 ];
+
 
 export const humanFactorInputs = [
   { placeholder: "humanFactorTab.background", name: "background" },

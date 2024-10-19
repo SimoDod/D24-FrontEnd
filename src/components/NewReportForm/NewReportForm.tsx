@@ -1,18 +1,13 @@
 import { Formik } from "formik";
 import { reportInitialValues /* reportValidationSchema */ } from "./formConfig";
 import { Flex, Form, Progress, Space, Spin, Tabs, Typography } from "antd";
-import {
-  newReportTabItems,
-  NewReportTabKeys,
-} from "../Pages/LearningReportPage/constants";
-import { Report, ReportStatus } from "./types";
+import { NewReportTabKeys, Report, ReportStatus } from "./types";
 import GeneralInformationTab from "./Tabs/GeneralInformationTab";
 import QuestionsTab from "./Tabs/QuestionsTab";
 import HumanFactorTab from "./Tabs/HumanFactorTab";
 import AttachmentsTab from "./Tabs/AttachmentsTab";
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../store/store";
-import ColorButton from "../ColorButton/ColorButton";
 import classes from "./NewReportForm.module.scss";
 import { useTranslation } from "react-i18next";
 import { fetchReportThunk } from "../../store/thunks/fetchReportThunk";
@@ -23,7 +18,8 @@ import { resetReport } from "../../store/slices/reportSlice";
 import { reportTabKey } from "./constants";
 import { questionsData } from "../../data/questionsData";
 import calculateReportFilledPercentage from "../../utils/learningReport/calculateReportFilledPercentage";
-
+import NewReportFormButtons from "./NewReportFormButtons/NewReportFormButtons";
+import useReportTabItems from "./hooks/useReportTabItems";
 const { Text, Title } = Typography;
 
 const isReport = (payload: unknown): payload is Report =>
@@ -32,6 +28,7 @@ const isReport = (payload: unknown): payload is Report =>
 const NewReportForm = () => {
   const { report, isLoading } = useAppSelector((state) => state.report);
   const { t } = useTranslation();
+  const reportTabItems = useReportTabItems();
   const dispatch = useAppDispatch();
   const [tabKey, setTabKey] = useState(
     localStorage.getItem(reportTabKey) || NewReportTabKeys.GENERAL_INFO
@@ -92,75 +89,17 @@ const NewReportForm = () => {
           <Flex wrap justify="space-between" className={classes.container}>
             <Space>
               <Text className={classes.status} type="secondary">
-                {/* TODO translate */}
-                Status:
+                {t("commonWords.status")}:
               </Text>
               <Text className={classes.status}>{report.status}</Text>
             </Space>
-            {isLoading ? (
-              <Spin size="large" className={classes.spinner} />
-            ) : (
-              <Space wrap>
-                {ReportStatus.CLOSED !== report.status && (
-                  <ColorButton
-                    onClick={() => handleFormSubmit(values)}
-                    color="green"
-                  >
-                    {t("buttons.save")}
-                  </ColorButton>
-                )}
-                {ReportStatus.NEW === report.status && (
-                  <ColorButton
-                    onClick={() =>
-                      handleFormSubmit(values, ReportStatus.SUBMITTED)
-                    }
-                  >
-                    {t("buttons.submit")}
-                  </ColorButton>
-                )}
-                {ReportStatus.SUBMITTED === report.status && (
-                  <>
-                    <ColorButton
-                      onClick={() => handleFormSubmit(values, ReportStatus.NEW)}
-                    >
-                      {t("buttons.unSubmit")}
-                    </ColorButton>
-                    <ColorButton
-                      onClick={() =>
-                        handleFormSubmit(values, ReportStatus.REVIEWED)
-                      }
-                    >
-                      {t("buttons.review")}
-                    </ColorButton>
-                  </>
-                )}
-                {ReportStatus.REVIEWED === report.status && (
-                  <>
-                    <ColorButton
-                      onClick={() =>
-                        handleFormSubmit(values, ReportStatus.SUBMITTED)
-                      }
-                    >
-                      {t("buttons.unReview")}
-                    </ColorButton>
-                    <ColorButton
-                      onClick={() =>
-                        handleFormSubmit(values, ReportStatus.CLOSED)
-                      }
-                      color="red"
-                    >
-                      {t("buttons.close")}
-                    </ColorButton>
-                  </>
-                )}
-                <ColorButton
-                  onClick={() => handleFormSubmit(values)}
-                  color="red"
-                >
-                  {t("buttons.delete")}
-                </ColorButton>
-              </Space>
-            )}
+            {isLoading && <Spin size="large" />}
+            <NewReportFormButtons
+              handleFormSubmit={handleFormSubmit}
+              values={values}
+              report={report}
+              isLoading={isLoading}
+            />
           </Flex>
           <Flex gap="large" vertical>
             <Progress
@@ -171,7 +110,7 @@ const NewReportForm = () => {
             />
             <Tabs
               activeKey={localStorage.getItem(reportTabKey) || ReportStatus.NEW}
-              items={newReportTabItems}
+              items={reportTabItems}
               onChange={handleTabKeyChange}
             />
           </Flex>

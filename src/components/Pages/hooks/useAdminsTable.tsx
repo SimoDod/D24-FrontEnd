@@ -55,7 +55,7 @@ export const useAdminsTable = (data: User[]) => {
     {
       title: t("Actions"),
       key: "actions",
-      render: (_, {}) => (
+      render: () => (
         <ColorButton
           color="red"
           onClick={() => {

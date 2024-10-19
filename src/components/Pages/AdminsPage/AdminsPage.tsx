@@ -34,10 +34,10 @@ const AdminsPage = () => {
           className={classes.table}
           dataSource={filteredTableData}
           columns={columns}
-          rowKey="userId"
+          rowKey="email"
           bordered
           loading={isLoading}
-          scroll={{ x: "max-content" }}
+          scroll={{ x: true }}
         />
       </Flex>
     </PageWrapper>

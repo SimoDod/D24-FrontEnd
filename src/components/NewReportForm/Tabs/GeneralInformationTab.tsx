@@ -6,7 +6,7 @@ import TextArea from "antd/es/input/TextArea";
 import classes from "./NewReportFormTabs.module.scss";
 import { useFormikContext } from "formik";
 import {
-  AsmlOffices,
+  Offices,
   MachineFamily,
   Report,
   Segments,
@@ -63,23 +63,13 @@ const GeneralInformationTab = () => {
           ))}
         </Select>
       </FormItemCol>
-      <FormItemCol label={t("newReportTabs.soNumber")} name="soNumber">
-        <Input
-          placeholder={t("commonWords.number")}
-          id="soNumber"
-          type="number"
-          status={touched.soNumber && errors.soNumber ? "warning" : ""}
-          value={values.soNumber}
-          onChange={({ target }) => setFieldValue("soNumber", target.value)}
-        />
-      </FormItemCol>
-      <FormItemCol label={t("newReportTabs.asmlOffice")} name="asmlOffice">
+      <FormItemCol label={t("newReportTabs.office")} name="office">
         <Select
           status={touched.segment && errors.segment ? "warning" : ""}
-          value={values.asmlOffice}
-          onChange={(v) => setFieldValue("asmlOffice", v)}
+          value={values.office}
+          onChange={(v) => setFieldValue("office", v)}
         >
-          {Object.values(AsmlOffices).map((category) => (
+          {Object.values(Offices).map((category) => (
             <Option key={category} value={category}>
               {category}
             </Option>
@@ -100,35 +90,6 @@ const GeneralInformationTab = () => {
           onChange={({ target }) =>
             setFieldValue("machineNumber", target.value)
           }
-        />
-      </FormItemCol>
-      <FormItemCol
-        label={t("newReportTabs.timestampCraftsmanship")}
-        name="timestampCraftsmanship"
-      >
-        <MyDatePicker
-          showTime
-          format={dateFormats.displayComplete}
-          placeholder={dateFormats.displayComplete}
-          className={classes.datePicker}
-          status={errors.timestampCraftsmanship ? "warning" : ""}
-          value={parseDateValue(values.timestampCraftsmanship)}
-          onChange={(v: Date) =>
-            setFieldValue(
-              "timestampCraftsmanship",
-              v ? format(v, dateFormats.complete) : null
-            )
-          }
-        />
-      </FormItemCol>
-      <FormItemCol label={t("newReportTabs.lhm")} name="lhm">
-        <Input
-          placeholder={t("commonWords.number")}
-          id="lhm"
-          type="number"
-          status={touched.lhm && errors.lhm ? "warning" : ""}
-          value={values.lhm}
-          onChange={({ target }) => setFieldValue("lhm", target.value)}
         />
       </FormItemCol>
       <FormItemCol label={t("newReportTabs.hoursDelay")} name="hoursDelay">
@@ -169,6 +130,25 @@ const GeneralInformationTab = () => {
             </Option>
           ))}
         </Select>
+      </FormItemCol>
+      <FormItemCol
+        label={t("newReportTabs.timestampCraftsmanship")}
+        name="timestampCraftsmanship"
+      >
+        <MyDatePicker
+          showTime
+          format={dateFormats.displayComplete}
+          placeholder={dateFormats.displayComplete}
+          className={classes.datePicker}
+          status={errors.timestampCraftsmanship ? "warning" : ""}
+          value={parseDateValue(values.timestampCraftsmanship)}
+          onChange={(v: Date) =>
+            setFieldValue(
+              "timestampCraftsmanship",
+              v ? format(v, dateFormats.complete) : null
+            )
+          }
+        />
       </FormItemCol>
       <FormItemCol label={t("newReportTabs.description")} name="description">
         <TextArea

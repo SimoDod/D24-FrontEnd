@@ -29,7 +29,6 @@ const AllLearningReportsPage = () => {
         handlePageSize={setPageSize}
         pageSize={pageSize}
       />
-
       <Table
         className={classes.table}
         dataSource={filteredTableData}
