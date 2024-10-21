@@ -19,6 +19,10 @@ export const en = {
       number: "Number",
       text: "Text",
       status: "Status",
+      name: "Name",
+    },
+    modal: {
+      deleteItemConfirm: "Do you want to delete this item?",
     },
     sider: {
       home: "Home",
@@ -74,6 +78,10 @@ export const en = {
       office: "Office",
       segment: "Segment",
       techBucket: "Tech Bucket",
+      offices: "Offices",
+      segments: "Segments",
+      techBuckets: "Tech Buckets",
+      selectTechBucket: "Please select a tech bucket",
     },
     questionsTab: {
       breakDuringShift: "Did you take a break",

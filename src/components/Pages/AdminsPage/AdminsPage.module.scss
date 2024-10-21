@@ -1,8 +1,9 @@
 @import "../../../theme/sizes";
 
 .container {
-  width: 100%;
-  max-width: $size * 350;
-  margin: 0 auto;
-  overflow-x: auto;
+  margin-top: 5%;
+
+  .card {
+    min-width: $size * 80;
+  }
 }

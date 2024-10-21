@@ -7,7 +7,7 @@ import FormItemCol from "../../FormItemCol/FormItemCol";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import i18n from "../../../localization/i18n";
-import { registerThunk } from "../../../store/thunks/registerThunk";
+import { registerThunk } from "../../../store/thunks/auth/registerThunk";
 import { RegisterData } from "../../../types/User";
 import { useAppDispatch } from "../../../store/store";
 import { showFullScreenLoader } from "../../../store/slices/loaderSlice";

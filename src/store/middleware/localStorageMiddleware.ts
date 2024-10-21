@@ -1,6 +1,6 @@
 import { Middleware } from "@reduxjs/toolkit";
-import { loginThunk } from "../thunks/loginThunk";
-import { registerThunk } from "../thunks/registerThunk";
+import { loginThunk } from "../thunks/auth/loginThunk";
+import { registerThunk } from "../thunks/auth/registerThunk";
 
 const localStorageMiddlewere: Middleware = () => (next) => (action) => {
   if (

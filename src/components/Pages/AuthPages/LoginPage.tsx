@@ -8,7 +8,7 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import i18n from "../../../localization/i18n";
 import { useAppDispatch } from "../../../store/store";
-import { loginThunk } from "../../../store/thunks/loginThunk";
+import { loginThunk } from "../../../store/thunks/auth/loginThunk";
 import { LoginData } from "../../../types/User";
 import { showFullScreenLoader } from "../../../store/slices/loaderSlice";
 import { menuItemKey } from "../../AppLayout/constants";

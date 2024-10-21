@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { routePaths } from "../../../routerConfig";
 import PageWrapper from "../../PageWrapper/PageWrapper";
-import { fetchAllLearningReports } from "../../../store/thunks/fetchAllLearningReports";
+import { fetchAllLearningReports } from "../../../store/thunks/report/fetchAllLearningReports";
 import { Table } from "antd";
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../store/store";
@@ -37,7 +37,7 @@ const AllLearningReportsPage = () => {
         bordered
         pagination={{ pageSize }}
         loading={isLoading}
-        scroll={{ x: "max-content" }}
+        scroll={{ x: true }}
       />
     </PageWrapper>
   );

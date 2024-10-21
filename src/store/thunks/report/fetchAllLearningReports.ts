@@ -1,9 +1,9 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import i18n from "../../localization/i18n";
+import i18n from "../../../localization/i18n";
 import { AxiosError } from "axios";
-import { api } from "../../api/api";
-import { Report } from "../../components/NewReportForm/types";
-import { routePaths } from "../../routerConfig";
+import { api } from "../../../api/api";
+import { Report } from "../../../components/NewReportForm/types";
+import { routePaths } from "../../../routerConfig";
 
 export const fetchAllLearningReports = createAsyncThunk<
   Report[],

@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { reportInitialValues } from "../../components/NewReportForm/formConfig";
 import { Report } from "../../components/NewReportForm/types";
-import { fetchReportThunk } from "../thunks/fetchReportThunk";
-import { postReportThunk } from "../thunks/postReportThunk";
-import { fetchAllLearningReports } from "../thunks/fetchAllLearningReports";
+import { fetchAllLearningReports } from "../thunks/report/fetchAllLearningReports";
+import { fetchReportThunk } from "../thunks/report/fetchReportThunk";
+import { postReportThunk } from "../thunks/report/postReportThunk";
 
 type ReportState = {
   report: Report;

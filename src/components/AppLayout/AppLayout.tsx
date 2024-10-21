@@ -6,7 +6,7 @@ const { Content, Footer } = Layout;
 import siderLogo from "../../assets/images/d24-logo.svg";
 import useMenuItems from "./hooks/useMenuItems";
 import { useAppDispatch } from "../../store/store";
-import { fetchUserThunk } from "../../store/thunks/fetchUserThunk";
+import { fetchUserThunk } from "../../store/thunks/auth/fetchUserThunk";
 import { MenuOutlined, SunOutlined, MoonOutlined } from "@ant-design/icons";
 import { menuItemKey } from "./constants";
 import { ThemeContext } from "../../context/ThemeContextProvider";
@@ -59,7 +59,9 @@ const App = () => {
           defaultValue={languages[0].shortName}
         >
           {languages.map(({ shortName, nativeName }) => (
-            <Option key={shortName} value={shortName}>{nativeName}</Option>
+            <Option key={shortName} value={shortName}>
+              {nativeName}
+            </Option>
           ))}
         </Select>
       </Footer>

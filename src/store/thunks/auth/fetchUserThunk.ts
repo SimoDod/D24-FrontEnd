@@ -1,8 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { User } from "../../types/User";
-import { api } from "../../api/api";
+import { User } from "../../../types/User";
+import { api } from "../../../api/api";
 import { AxiosError } from "axios";
-import i18n from "../../localization/i18n";
+import i18n from "../../../localization/i18n";
 
 export const fetchUserThunk = createAsyncThunk<
   User,

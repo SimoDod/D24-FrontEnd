@@ -10,16 +10,16 @@ import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../store/store";
 import classes from "./NewReportForm.module.scss";
 import { useTranslation } from "react-i18next";
-import { fetchReportThunk } from "../../store/thunks/fetchReportThunk";
 import { useNavigate, useParams } from "react-router-dom";
 import { routePaths } from "../../routerConfig";
-import { postReportThunk } from "../../store/thunks/postReportThunk";
 import { resetReport } from "../../store/slices/reportSlice";
 import { reportTabKey } from "./constants";
 import { questionsData } from "../../data/questionsData";
 import calculateReportFilledPercentage from "../../utils/learningReport/calculateReportFilledPercentage";
 import NewReportFormButtons from "./NewReportFormButtons/NewReportFormButtons";
 import useReportTabItems from "./hooks/useReportTabItems";
+import { fetchReportThunk } from "../../store/thunks/report/fetchReportThunk";
+import { postReportThunk } from "../../store/thunks/report/postReportThunk";
 const { Text, Title } = Typography;
 
 const isReport = (payload: unknown): payload is Report =>

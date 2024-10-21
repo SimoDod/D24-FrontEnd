@@ -1,9 +1,9 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import i18n from "../../localization/i18n";
 import { AxiosError } from "axios";
-import { api } from "../../api/api";
-import { Report } from "../../components/NewReportForm/types";
-import { routePaths } from "../../routerConfig";
+import { api } from "../../../api/api";
+import i18n from "../../../localization/i18n";
+import { routePaths } from "../../../routerConfig";
+import { Report } from "../../../components/NewReportForm/types";
 
 export const postReportThunk = createAsyncThunk<
   Report,

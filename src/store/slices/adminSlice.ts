@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { User } from "../../types/User";
-import { fetchAdminsThunk } from "../thunks/fetchAdminsThunk";
+import { fetchAdminsThunk } from "../thunks/admins/fetchAdminsThunk";
 
 type AdminsState = {
   admins: User[];

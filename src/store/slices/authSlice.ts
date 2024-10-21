@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { loginThunk } from "../thunks/loginThunk";
-import { registerThunk } from "../thunks/registerThunk";
+import { loginThunk } from "../thunks/auth/loginThunk";
+import { registerThunk } from "../thunks/auth/registerThunk";
 import { User } from "../../types/User";
-import { fetchUserThunk } from "../thunks/fetchUserThunk";
+import { fetchUserThunk } from "../thunks/auth/fetchUserThunk";
 
 type AuthState = {
   token: string | null;
