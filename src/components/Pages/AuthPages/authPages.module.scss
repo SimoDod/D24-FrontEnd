@@ -1,21 +1,25 @@
 @import "../../../theme/sizes";
 
-.registerContainer,
-.loginContainer {
-  max-width: 444px;
-  padding: $size4x;
-  background-color: var(--ant-color-neutral-2);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  border-radius: $size2x;
-  text-align: center;
-  margin-top: 16%;
+.container {
+  background-color: var(--ant-color-neutral-3);
+  height: 100vh;
+  align-items: center;
 
-  .button {
-    margin-top: $size3x;
-    width: 50%;
-  }
+  .card {
+    max-width: $size * 120;
+    padding: $size4x;
+    background-color: var(--ant-color-neutral-2);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin-bottom: $size * 50;
 
-  .title {
-    margin-bottom: $size4x;
+    .button {
+      margin-top: $size3x;
+      width: 50%;
+    }
+
+    .title {
+      margin-bottom: $size4x;
+    }
   }
 }

@@ -31,28 +31,12 @@ export enum ReportStatus {
   CLOSED = "Closed",
 }
 
-export enum Segments {
-  SEGMENT1 = "Segment 1",
-  SEGMENT2 = "Segment 2",
-  SEGMENT3 = "Segment 3",
-}
-
-export enum Offices {
-  office1 = "Office 1",
-  office2 = "Office 2",
-  office3 = "Office 3",
-}
-
-export enum TechBuckets {
-  techBucket1 = "Tech Bucket 1",
-  techBucket2 = "Tech Bucket 2",
-  techBucket3 = "Tech Bucket 3",
-}
-
 export enum MachineFamily {
-  machine1 = "Machine 1",
-  machine2 = "Machine 2",
-  machine3 = "Machine 3",
+  immersionScanner = "Immersion Scanner",
+  stepAndScanSystem = "Step-and-Scan System",
+  waferStepper = "Wafer Stepper",
+  extremeUVSystem = "Extreme UV System",
+  directWriteLithography = "Direct Write Lithography",
 }
 
 export type Report = {

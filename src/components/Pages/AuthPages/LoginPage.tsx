@@ -13,7 +13,6 @@ import { LoginData } from "../../../types/User";
 import { showFullScreenLoader } from "../../../store/slices/loaderSlice";
 import { menuItemKey } from "../../AppLayout/constants";
 import { routePaths } from "../../../routerConfig";
-
 const { Title, Text } = Typography;
 
 const LoginSchema = Yup.object().shape({
@@ -38,8 +37,8 @@ const LoginPage = () => {
   };
 
   return (
-    <Row justify="center">
-      <Card className={classes.loginContainer}>
+    <Row className={classes.container} justify="center">
+      <Card className={classes.card}>
         <Title level={1} className={classes.title}>
           {t("loginPage.login")}
         </Title>
@@ -60,7 +59,7 @@ const LoginPage = () => {
             errors,
             touched,
           }) => (
-            <Form name="login" layout="vertical" onFinish={handleSubmit}>
+            <Form name="login" onFinish={handleSubmit}>
               <Row gutter={[12, 12]}>
                 <FormItemCol
                   span={{ xs: 24, sm: 24, md: 24, lg: 24, xl: 24 }}
@@ -75,7 +74,6 @@ const LoginPage = () => {
                   />
                   <Text>{touched.email && errors.email}</Text>
                 </FormItemCol>
-
                 <FormItemCol
                   span={{ xs: 24, sm: 24, md: 24, lg: 24, xl: 24 }}
                   label={t("loginPage.password")}
@@ -91,7 +89,6 @@ const LoginPage = () => {
                   />
                   <Text>{touched.password && errors.password}</Text>
                 </FormItemCol>
-
                 <FormItemCol
                   span={{ xs: 24, sm: 24, md: 24, lg: 24, xl: 24 }}
                   labelCol={24}
@@ -110,7 +107,10 @@ const LoginPage = () => {
               </Row>
               <Text>
                 {t("loginPage.noAccount")}{" "}
-                <Button type="link" onClick={() => navigate("/register")}>
+                <Button
+                  type="link"
+                  onClick={() => navigate(routePaths.register.path)}
+                >
                   {t("buttons.register")}
                 </Button>
               </Text>

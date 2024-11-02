@@ -3,7 +3,11 @@ import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { routePaths } from "../../../routerConfig";
 import ColorButton from "../../ColorButton/ColorButton";
-import { NewReportTabKeys, Report, ReportStatus } from "../../NewReportForm/types";
+import {
+  NewReportTabKeys,
+  Report,
+  ReportStatus,
+} from "../../NewReportForm/types";
 import { format } from "date-fns";
 import { dateFormats } from "../../DatePicker/constants";
 import { reportTabKey } from "../../NewReportForm/constants";

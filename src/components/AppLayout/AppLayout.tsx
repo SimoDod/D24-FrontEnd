@@ -1,72 +1,50 @@
 import classes from "./AppLayout.module.scss";
-import { Layout, Menu, Image, Typography, Switch, Select } from "antd";
+import { Layout, Menu, Typography, Button } from "antd";
 import { Outlet } from "react-router-dom";
-import { useContext, useEffect } from "react";
+import { useEffect } from "react";
 const { Content, Footer } = Layout;
-import siderLogo from "../../assets/images/d24-logo.svg";
 import useMenuItems from "./hooks/useMenuItems";
-import { useAppDispatch } from "../../store/store";
+import { useAppDispatch, useAppSelector } from "../../store/store";
 import { fetchUserThunk } from "../../store/thunks/auth/fetchUserThunk";
-import { MenuOutlined, SunOutlined, MoonOutlined } from "@ant-design/icons";
+import { MenuOutlined } from "@ant-design/icons";
 import { menuItemKey } from "./constants";
-import { ThemeContext } from "../../context/ThemeContextProvider";
-import { ThemeType } from "../../theme/types";
-import i18n from "../../localization/i18n";
-import { languages } from "../../localization/constants";
+
+import FloatButtonGroup from "./FloatButton/FloatButtonGroup";
 const { Header } = Layout;
 const { Text } = Typography;
-const { Option } = Select;
 
-const App = () => {
-  const items = useMenuItems();
+const AppLayout = () => {
+  const userRole = useAppSelector((state) => state.auth.user?.role);
+  const items = useMenuItems(userRole);
   const dispatch = useAppDispatch();
-  const { toggleTheme, themeType } = useContext(ThemeContext);
 
   useEffect(() => {
     dispatch(fetchUserThunk());
   }, [dispatch]);
 
   return (
-    <Layout>
-      <Header className={classes.header}>
-        <Image
-          className={classes.headerImage}
-          src={siderLogo}
-          preview={false}
-          alt="Sider Logo"
-        />
-        <Menu
-          mode="horizontal"
-          className={classes.menu}
-          items={items}
-          selectedKeys={[localStorage.getItem(menuItemKey) || ""]}
-          overflowedIndicator={<MenuOutlined />}
-        />
-      </Header>
-      <Content className={classes.content}>
-        <Outlet />
-      </Content>
-      <Footer className={classes.footer}>
-        <Switch
-          checkedChildren={<SunOutlined />}
-          unCheckedChildren={<MoonOutlined />}
-          defaultChecked={themeType === ThemeType.DEFAULT}
-          onChange={() => toggleTheme()}
-        />
-        <Text>D24 ©{new Date().getFullYear()} Created by Simeon Dodov.</Text>
-        <Select
-          onChange={(value) => i18n.changeLanguage(value)}
-          defaultValue={languages[0].shortName}
-        >
-          {languages.map(({ shortName, nativeName }) => (
-            <Option key={shortName} value={shortName}>
-              {nativeName}
-            </Option>
-          ))}
-        </Select>
-      </Footer>
-    </Layout>
+    <>
+      <FloatButtonGroup />
+      <Layout>
+        <Header className={classes.header}>
+          <Text className={classes.headerLogo}>D24</Text>
+          <Menu
+            mode="horizontal"
+            className={classes.menu}
+            items={items}
+            selectedKeys={[localStorage.getItem(menuItemKey) || ""]}
+            overflowedIndicator={<Button icon={<MenuOutlined />} />}
+          />
+        </Header>
+        <Content className={classes.content}>
+          <Outlet />
+        </Content>
+        <Footer className={classes.footer}>
+          <Text>D24 ©{new Date().getFullYear()} Created by Simeon Dodov</Text>
+        </Footer>
+      </Layout>
+    </>
   );
 };
 
-export default App;
+export default AppLayout;

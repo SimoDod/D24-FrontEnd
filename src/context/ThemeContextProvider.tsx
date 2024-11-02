@@ -17,10 +17,14 @@ export const themeKey = "appTheme";
 export const ThemeContext = createContext(ThemeContextInitialState);
 
 export const ThemeContextProvider = ({ children }: PropsWithChildren) => {
-  const [themeType, setThemeType] = useState(localStorage.getItem(themeKey) as ThemeType ?? ThemeType.DEFAULT );  
+  const [themeType, setThemeType] = useState(
+    (localStorage.getItem(themeKey) as ThemeType) ?? ThemeType.DEFAULT
+  );
 
   const toggleTheme = () =>
-    setThemeType(themeType === ThemeType.DARK ? ThemeType.DEFAULT : ThemeType.DARK);
+    setThemeType(
+      themeType === ThemeType.DARK ? ThemeType.DEFAULT : ThemeType.DARK
+    );
 
   useEffect(() => {
     localStorage.setItem(themeKey, themeType);

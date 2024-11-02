@@ -2,6 +2,8 @@ import { Space } from "antd";
 import ColorButton from "../../ColorButton/ColorButton";
 import { Report, ReportStatus } from "../types";
 import { useTranslation } from "react-i18next";
+import { useParams } from "react-router-dom";
+import { routePaths } from "../../../routerConfig";
 
 type Props = {
   handleFormSubmit: (values: Report, status?: ReportStatus) => Promise<void>;
@@ -17,6 +19,7 @@ const NewReportFormButtons = ({
   isLoading,
 }: Props) => {
   const { t } = useTranslation();
+  const { reportNumber } = useParams();
 
   return (
     <Space wrap>
@@ -70,13 +73,15 @@ const NewReportFormButtons = ({
           </ColorButton>
         </>
       )}
-      <ColorButton
-        onClick={() => handleFormSubmit(values)}
-        color="red"
-        disabled={isLoading}
-      >
-        {t("buttons.delete")}
-      </ColorButton>
+      {reportNumber !== routePaths.learningReport.new && (
+        <ColorButton
+          onClick={() => handleFormSubmit(values)}
+          color="red"
+          disabled={isLoading}
+        >
+          {t("buttons.delete")}
+        </ColorButton>
+      )}
     </Space>
   );
 };

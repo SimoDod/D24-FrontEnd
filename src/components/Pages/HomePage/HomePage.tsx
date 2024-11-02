@@ -9,16 +9,17 @@ import {
 } from "@ant-design/icons";
 import classes from "./HomePage.module.scss";
 import { useNavigate } from "react-router-dom";
+import { useAppSelector } from "../../../store/store";
 const { Title, Paragraph } = Typography;
 
 const HomePage = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const username = useAppSelector((state) => state.auth.user?.username);
 
   return (
-    <PageWrapper title={t(routePaths.home.label)}>
+    <PageWrapper title={t("homePage.welcome") + username}>
       <Space direction="vertical" className={classes.heroSection}>
-        <Title className={classes.heroTitle}>{t("homePage.title")}</Title>
         <Paragraph className={classes.heroParagraph}>
           {t("homePage.description")}
         </Paragraph>

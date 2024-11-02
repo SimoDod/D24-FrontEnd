@@ -7,7 +7,6 @@ export const binaryQuestions = [
   { text: "questionsTab.worksIndependently", name: "worksIndependently" },
 ];
 
-
 export const humanFactorInputs = [
   { placeholder: "humanFactorTab.background", name: "background" },
   { placeholder: "humanFactorTab.myselInfluence", name: "myselInfluence" },

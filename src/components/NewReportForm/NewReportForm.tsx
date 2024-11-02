@@ -22,7 +22,7 @@ import { fetchReportThunk } from "../../store/thunks/report/fetchReportThunk";
 import { postReportThunk } from "../../store/thunks/report/postReportThunk";
 const { Text, Title } = Typography;
 
-const isReport = (payload: unknown): payload is Report =>
+const isReport = (payload: Report | string): payload is Report =>
   typeof payload === "object" && payload !== null && "reportNumber" in payload;
 
 const NewReportForm = () => {

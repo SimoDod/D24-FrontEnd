@@ -13,7 +13,6 @@ import { useAppDispatch } from "../../../store/store";
 import { showFullScreenLoader } from "../../../store/slices/loaderSlice";
 import { routePaths } from "../../../routerConfig";
 import { menuItemKey } from "../../AppLayout/constants";
-
 const { Title, Text } = Typography;
 
 const RegisterSchema = Yup.object().shape({
@@ -42,8 +41,8 @@ const RegisterPage = () => {
   };
 
   return (
-    <Row justify="center">
-      <Card className={classes.registerContainer}>
+    <Row className={classes.container} justify="center">
+      <Card className={classes.card}>
         <Title level={1} className={classes.title}>
           {t("registerPage.register")}
         </Title>
@@ -150,7 +149,10 @@ const RegisterPage = () => {
               </Row>
               <Text>
                 {t("registerPage.alreadyHaveAccount")}
-                <Button type="link" onClick={() => navigate("/login")}>
+                <Button
+                  type="link"
+                  onClick={() => navigate(routePaths.login.path)}
+                >
                   {t("buttons.login")}
                 </Button>
               </Text>

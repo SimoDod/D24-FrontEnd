@@ -8,8 +8,13 @@ import { useAppDispatch, useAppSelector } from "../../../store/store";
 import { updateOfficeNameThunk } from "../../../store/thunks/maintenance/updateOfficeNameThunk";
 import { deleteOfficeThunk } from "../../../store/thunks/maintenance/deleteOfficeThunk";
 import { updateSegmentThunk } from "../../../store/thunks/maintenance/updateSegmentThunk";
+import { updateTechBucketNameThunk } from "../../../store/thunks/maintenance/updateTechBucketThunk";
+import { deleteSegmentThunk } from "../../../store/thunks/maintenance/deleteSegmentThunk";
+import { deleteTechBucketThunk } from "../../../store/thunks/maintenance/deleteTechBucketThunk";
 const { Text } = Typography;
 const { confirm } = Modal;
+
+//TODO translate
 
 export const useMaintenanceTable = (tab: MaintenanceTabs) => {
   const { t } = useTranslation();
@@ -20,6 +25,12 @@ export const useMaintenanceTable = (tab: MaintenanceTabs) => {
     if (tab === MaintenanceTabs.OFFICES) {
       dispatch(updateOfficeNameThunk({ name: newName, id }));
     }
+    if (tab === MaintenanceTabs.SEGMENTS) {
+      dispatch(updateSegmentThunk({ name: newName, segmentId: id }));
+    }
+    if (tab === MaintenanceTabs.TECH_BUCKETS) {
+      dispatch(updateTechBucketNameThunk({ name: newName, id }));
+    }
   };
 
   const handleItemDelete = (id: string) => {
@@ -29,11 +40,17 @@ export const useMaintenanceTable = (tab: MaintenanceTabs) => {
         if (tab === MaintenanceTabs.OFFICES) {
           dispatch(deleteOfficeThunk(id));
         }
+        if (tab === MaintenanceTabs.SEGMENTS) {
+          dispatch(deleteSegmentThunk(id));
+        }
+        if (tab === MaintenanceTabs.TECH_BUCKETS) {
+          dispatch(deleteTechBucketThunk(id));
+        }
       },
     });
   };
 
-  const handleTechkBucketChange = (value: string[], segmentId: string) => {
+  const handleTechBucketChange = (value: string[], segmentId: string) => {
     dispatch(updateSegmentThunk({ segmentId, selectedTechBuckets: value }));
   };
 
@@ -44,15 +61,15 @@ export const useMaintenanceTable = (tab: MaintenanceTabs) => {
     render: ({ selectedTechBuckets, _id: segmentId }: Segment) => (
       <Select
         mode="tags"
-        size="small"
         placeholder={t("maintenancePage.selectTechBucket")}
         value={selectedTechBuckets.map(({ _id }) => _id)}
         onChange={(techBucketIds) =>
-          handleTechkBucketChange(techBucketIds, segmentId)
+          handleTechBucketChange(techBucketIds, segmentId)
         }
         options={techBuckets.map(({ name, _id }) => ({
           label: name,
           value: _id,
+          key: _id,
         }))}
         style={{ minWidth: sizes.size * 50 }}
       />
@@ -70,9 +87,7 @@ export const useMaintenanceTable = (tab: MaintenanceTabs) => {
         return (
           <Text
             editable={{
-              onChange: (newName) => {
-                editableRow.name = newName;
-              },
+              onChange: (newName) => (editableRow.name = newName),
               onEnd: () => handleNameEdit(editableRow.name, editableRow._id),
               icon: <EditOutlined style={{ fontSize: sizes.size3x }} />,
             }}

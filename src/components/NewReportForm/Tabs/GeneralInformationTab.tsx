@@ -5,25 +5,42 @@ import { dateFormats } from "../../DatePicker/constants";
 import TextArea from "antd/es/input/TextArea";
 import classes from "./NewReportFormTabs.module.scss";
 import { useFormikContext } from "formik";
-import {
-  Offices,
-  MachineFamily,
-  Report,
-  Segments,
-  TechBuckets,
-} from "../types";
+import { MachineFamily, Report } from "../types";
 import { format, isValid, parseISO } from "date-fns";
 import MyDatePicker from "../../DatePicker/DatePicker";
-
+import { useAppDispatch, useAppSelector } from "../../../store/store";
+import { useEffect, useState } from "react";
+import { fetchAllSegmentsThunk } from "../../../store/thunks/maintenance/fetchAllSegmentsThunk";
+import { fetchAllOfficesThunk } from "../../../store/thunks/maintenance/fetchAllOfficesThunk";
+import { TechBucket } from "../../../types/MaintenanceOptions";
 const { Option } = Select;
 const { Text } = Typography;
 
 const GeneralInformationTab = () => {
   const { values, setFieldValue, errors, touched } = useFormikContext<Report>();
+  const segments = useAppSelector((state) => state.segment.segments);
+  const offices = useAppSelector((state) => state.office.offices);
+  const dispatch = useAppDispatch();
   const { t } = useTranslation();
+  const [selectedTechBuckets, setSelectedTechBuckets] = useState<TechBucket[]>(
+    []
+  );
+
+  useEffect(() => {
+    dispatch(fetchAllSegmentsThunk());
+    dispatch(fetchAllOfficesThunk());
+  }, [dispatch]);
 
   const parseDateValue = (value: string | null) => {
     return value && isValid(parseISO(value)) ? parseISO(value) : null;
+  };
+
+  const handleSegmentChange = (v: string) => {
+    setFieldValue("segment", v);
+    const curSegment = segments.find((segment) => segment.name === v);
+
+    if (curSegment?.selectedTechBuckets)
+      setSelectedTechBuckets(curSegment?.selectedTechBuckets);
   };
 
   return (
@@ -54,11 +71,11 @@ const GeneralInformationTab = () => {
         <Select
           status={errors.segment ? "warning" : ""}
           value={values.segment}
-          onChange={(v) => setFieldValue("segment", v)}
+          onChange={(v) => handleSegmentChange(v)}
         >
-          {Object.values(Segments).map((category) => (
-            <Option key={category} value={category}>
-              {category}
+          {Object.values(segments).map(({ name, _id }) => (
+            <Option key={_id} value={name}>
+              {name}
             </Option>
           ))}
         </Select>
@@ -69,9 +86,9 @@ const GeneralInformationTab = () => {
           value={values.office}
           onChange={(v) => setFieldValue("office", v)}
         >
-          {Object.values(Offices).map((category) => (
-            <Option key={category} value={category}>
-              {category}
+          {Object.values(offices).map(({ name, _id }) => (
+            <Option key={_id} value={name}>
+              {name}
             </Option>
           ))}
         </Select>
@@ -108,9 +125,9 @@ const GeneralInformationTab = () => {
           value={values.techBucket}
           onChange={(v) => setFieldValue("techBucket", v)}
         >
-          {Object.values(TechBuckets).map((category) => (
-            <Option key={category} value={category}>
-              {category}
+          {Object.values(selectedTechBuckets).map(({ name, _id }) => (
+            <Option key={_id} value={name}>
+              {name}
             </Option>
           ))}
         </Select>

@@ -2,6 +2,8 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Segment } from "../../types/MaintenanceOptions";
 import { fetchAllSegmentsThunk } from "../thunks/maintenance/fetchAllSegmentsThunk";
 import { updateSegmentThunk } from "../thunks/maintenance/updateSegmentThunk";
+import { createSegmentThunk } from "../thunks/maintenance/createSegmentThunk";
+import { deleteSegmentThunk } from "../thunks/maintenance/deleteSegmentThunk";
 
 type MaintenanceState = {
   segments: Segment[];
@@ -40,6 +42,26 @@ const maintenanceSlice = createSlice({
       }
     );
 
+    // Create segment
+    addCase(createSegmentThunk.pending, (state) => {
+      state.isLoading = true;
+      state.error = null;
+    });
+    addCase(
+      createSegmentThunk.fulfilled,
+      (state, action: PayloadAction<Segment>) => {
+        state.isLoading = false;
+        state.segments = [...state.segments, action.payload];
+      }
+    );
+    addCase(
+      createSegmentThunk.rejected,
+      (state, action: PayloadAction<string | undefined>) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      }
+    );
+
     // Update segment tech buckets
     addCase(updateSegmentThunk.pending, (state) => {
       state.isLoading = true;
@@ -58,6 +80,28 @@ const maintenanceSlice = createSlice({
     );
     addCase(
       updateSegmentThunk.rejected,
+      (state, action: PayloadAction<string | undefined>) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      }
+    );
+
+    // Delete office
+    addCase(deleteSegmentThunk.pending, (state) => {
+      state.isLoading = true;
+      state.error = null;
+    });
+    addCase(
+      deleteSegmentThunk.fulfilled,
+      (state, action: PayloadAction<Segment>) => {
+        state.isLoading = false;
+        state.segments = state.segments.filter(
+          ({ _id }) => action.payload._id !== _id
+        );
+      }
+    );
+    addCase(
+      deleteSegmentThunk.rejected,
       (state, action: PayloadAction<string | undefined>) => {
         state.isLoading = false;
         state.error = action.payload;

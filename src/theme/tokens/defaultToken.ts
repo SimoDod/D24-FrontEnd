@@ -72,7 +72,7 @@ const defaultToken: ExtendedAliasToken = {
   colorOrange8: "#ad4e00",
   colorOrange9: "#873800",
   colorOrange10: "#612500",
-  
+
   // other
   colorBgLayout: "#f0f2f5",
   colorDividerPrimary: "rgb(5 5 5 / 0.06)",

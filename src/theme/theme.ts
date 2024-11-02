@@ -21,16 +21,26 @@ export const generateTheme = (
     Menu: {
       itemHoverColor: token.colorPrimary7,
       horizontalItemSelectedColor: token.colorPrimary8,
+      colorBgTextActive: token.colorPrimary8,
     },
     Input: {
       controlHeight: sizes.size * 9,
+      hoverBorderColor: token.colorPrimary8,
+      activeBorderColor: token.colorPrimary8,
     },
     Select: {
       controlHeight: sizes.size * 9,
+      optionActiveBg: token.colorPrimary2,
+      colorPrimaryHover: token.colorPrimary8,
     },
     Button: {
       colorBgBase: token.colorPrimary10,
       controlHeight: sizes.size * 9,
+      colorPrimary: token.colorPrimary7,
+      colorPrimaryHover: token.colorPrimary8,
+      colorLinkActive: token.colorPrimary8,
+      colorLinkHover: token.colorPrimary8,
+      colorLink: token.colorPrimary7,
     },
     Typography: {
       titleMarginTop: 0,
@@ -54,12 +64,18 @@ export const generateTheme = (
     },
     Switch: {
       colorPrimary: token.colorPrimary7,
+      colorPrimaryHover: token.colorPrimary8,
     },
     DatePicker: {
       colorPrimary: token.colorPrimary7,
+      colorPrimaryHover: token.colorPrimary8,
     },
     Progress: {
       defaultColor: token.colorPrimary7,
+    },
+    FloatButton: {
+      colorPrimary: token.colorPrimary7,
+      colorPrimaryHover: token.colorPrimary8,
     },
   },
   algorithm,

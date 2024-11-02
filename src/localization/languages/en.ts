@@ -55,7 +55,10 @@ export const en = {
       confirmPassword: "Confirm Password",
       alreadyHaveAccount: "Already have an account?",
     },
-    errorPage: { wrongPath: "Wrong path." },
+    errorPage: {
+      wrongPath: "404 Not found!",
+      errorMessage: "Oops! Something went wrong.",
+    },
     newReportTabs: {
       reportNumber: "Report Number",
       reviewersEmail: "Reviewers Email",
@@ -158,7 +161,6 @@ export const en = {
       q36: "Did you have all the necessary parts and skills available at the right time?",
     },
     homePage: {
-      title: "Creating a Safer and Better Environment for Everyone",
       description:
         "Our incident reporting tool is designed to make sure your workplace is safe, efficient, and constantly improving. We don’t judge mistakes—instead, we focus on learning from them to foster a healthier work environment for everyone.",
       focusOnSafetyTitle: "Focus on Safety",
@@ -174,6 +176,7 @@ export const en = {
       aboutDescription:
         "Our incident reporting application is built for teams working in CPU machine production environments, where precision, safety, and efficiency are key. The application allows workers to report issues and incidents without the worry of punishment or blame. Instead, we focus on understanding the root causes and improving the environment for everyone. Our ultimate goal is to create a safe, efficient, and productive workplace, one report at a time.",
       reportButton: "Report an Incident",
+      welcome: "Welcome, ",
     },
   },
 } as const;
