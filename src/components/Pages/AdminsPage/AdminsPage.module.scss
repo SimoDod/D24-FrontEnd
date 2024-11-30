@@ -1,0 +1,9 @@
+@import "../../../theme/sizes";
+
+.container {
+  margin-top: 5%;
+
+  .card {
+    min-width: $size * 80;
+  }
+}

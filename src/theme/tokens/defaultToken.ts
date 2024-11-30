@@ -2,7 +2,7 @@ import { ExtendedAliasToken } from "../types";
 
 const defaultToken: ExtendedAliasToken = {
   fontFamily: "Roboto",
-  fontSize: "16px",
+  fontSize: 16 as never,
   // primary
   colorPrimary1: "#e6f7ff",
   colorPrimary2: "#bae7ff",
@@ -72,7 +72,7 @@ const defaultToken: ExtendedAliasToken = {
   colorOrange8: "#ad4e00",
   colorOrange9: "#873800",
   colorOrange10: "#612500",
-  
+
   // other
   colorBgLayout: "#f0f2f5",
   colorDividerPrimary: "rgb(5 5 5 / 0.06)",

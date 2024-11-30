@@ -1,27 +1,28 @@
 export const routePaths = {
+  login: { label: "", path: "/login" },
+  register: { label: "", path: "/register" },
   home: { label: "sider.home", path: "/" },
   releaseNotes: { label: "sider.releaseNotes", path: "/release-notes" },
-  createLearningReport: {
-    label: "sider.createLearningReport",
-    path: "/create-learning-report",
+  learningReport: {
+    label: "sider.learningReport",
+    path: "/learning-report/",
+    reportNumber: "/learning-report/:reportNumber",
+    pathNew: "/learning-report/new",
+    new: "new",
   },
   allLearningReports: {
     label: "sider.allLearningReports",
     path: "/all-learning-reports",
   },
-  administrators: {
-    label: "sider.administrators",
-    path: "/administrators",
+  admins: {
+    label: "sider.admins",
+    path: "/admins",
   },
   maintenance: {
     label: "sider.maintenance",
     path: "/maintenance",
   },
+  notFound: {
+    path: "/404",
+  },
 } as const;
-
-export type RoutePathEntries = Partial<{
-  [K in keyof typeof routePaths]: {
-    label: (typeof routePaths)[K]["label"];
-    path: (typeof routePaths)[K]["path"];
-  };
-}>;

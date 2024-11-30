@@ -1,5 +1,6 @@
 export type Language = {
   nativeName: string;
+  shortName: string;
 };
 
-export type Languages = Record<string, Language>;
+export type Languages = Language[];

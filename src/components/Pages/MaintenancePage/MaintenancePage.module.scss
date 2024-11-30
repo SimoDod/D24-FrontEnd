@@ -1,0 +1,12 @@
+@import "../../../theme/sizes";
+
+.container {
+  width: 100%;
+  max-width: $size * 300;
+  margin: 0 auto;
+  overflow-x: auto;
+}
+
+.cascader {
+  width: 100%;
+}

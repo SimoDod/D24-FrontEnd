@@ -1,0 +1,14 @@
+@import "../../theme/sizes";
+
+.page {
+  padding: 0 $size8x;
+
+  .header {
+    padding: $size5x;
+    text-align: center;
+  }
+
+  @media (max-width: 768px) {
+    padding: 0 $size;
+  }
+}

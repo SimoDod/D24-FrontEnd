@@ -1,0 +1,9 @@
+@import "../../../theme/sizes";
+
+.settingsFloatButton {
+  inset-inline-end: $size8x;
+}
+
+.languageFloatButton {
+    inset-inline-end: $size * 21;
+}

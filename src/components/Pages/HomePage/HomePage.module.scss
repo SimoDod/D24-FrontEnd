@@ -1,0 +1,60 @@
+@import "../../../theme/sizes";
+
+.heroSection {
+  text-align: center;
+  margin: $size * 15 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .heroParagraph {
+    font-size: $size5x;
+    max-width: 800px;
+    text-align: center;
+  }
+}
+
+.featureSection {
+  margin-top: $size8x;
+
+  .featureCard {
+    text-align: center;
+    padding-top: $size6x;
+  }
+
+  .featureIconSafety {
+    font-size: $size * 15;
+    color: var(--ant-color-primary-6);
+  }
+
+  .featureIconImprovement {
+    font-size: $size * 15;
+    color: var(--ant-color-green-6);
+  }
+
+  .featureIconNonJudgmental {
+    font-size: $size * 15;
+    color: var(--ant-color-orange-5);
+  }
+}
+
+.aboutSection {
+  margin-top: 80px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .aboutParagraph {
+    font-size: 16px;
+    max-width: 900px;
+    text-align: center;
+  }
+}
+
+.ctaButton {
+  padding: $size3x;
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+}

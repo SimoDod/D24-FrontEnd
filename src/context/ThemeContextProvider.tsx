@@ -1,32 +1,30 @@
-import {
-  createContext,
-  useState,
-  useEffect,
-  PropsWithChildren,
-  Dispatch,
-  SetStateAction,
-} from "react";
+import { createContext, useState, useEffect, PropsWithChildren } from "react";
 import { ConfigProvider } from "antd";
 import { generateTheme, themeConfig } from "../theme/theme";
 import { ThemeType } from "../theme/types";
 
 type ThemeContextProps = {
   themeType: ThemeType;
-  setThemeType: Dispatch<SetStateAction<ThemeType>>;
+  toggleTheme: () => void;
 };
 
-const themeKey = "appTheme";
+const ThemeContextInitialState: ThemeContextProps = {
+  themeType: ThemeType.DEFAULT,
+  toggleTheme: () => {},
+};
 
-export const ThemeContext = createContext<ThemeContextProps | undefined>(
-  undefined
-);
+export const themeKey = "appTheme";
+export const ThemeContext = createContext(ThemeContextInitialState);
 
 export const ThemeContextProvider = ({ children }: PropsWithChildren) => {
-  const [themeType, setThemeType] = useState(() => {
-    const storedTheme = localStorage.getItem(themeKey);
+  const [themeType, setThemeType] = useState(
+    (localStorage.getItem(themeKey) as ThemeType) ?? ThemeType.DEFAULT
+  );
 
-    return (storedTheme as ThemeType) ?? ThemeType.DEFAULT;
-  });
+  const toggleTheme = () =>
+    setThemeType(
+      themeType === ThemeType.DARK ? ThemeType.DEFAULT : ThemeType.DARK
+    );
 
   useEffect(() => {
     localStorage.setItem(themeKey, themeType);
@@ -36,8 +34,10 @@ export const ThemeContextProvider = ({ children }: PropsWithChildren) => {
   const theme = generateTheme(token, algorithm);
 
   return (
-    <ThemeContext.Provider value={{ themeType, setThemeType }}>
-      <ConfigProvider theme={theme}>{children}</ConfigProvider>
+    <ThemeContext.Provider value={{ themeType, toggleTheme }}>
+      <ConfigProvider componentSize="middle" theme={theme}>
+        {children}
+      </ConfigProvider>
     </ThemeContext.Provider>
   );
 };

@@ -1,0 +1,36 @@
+.green {
+  color: var(--ant-color-green-7);
+}
+
+.blue {
+  color: var(--ant-color-primary-7);
+}
+
+.red {
+  color: var(--ant-color-volcano-7);
+}
+
+.orange {
+  color: var(--ant-color-orange-7);
+}
+
+// Set to !important otherwise the ant design's theme overrides it
+.green:hover {
+  border-color: var(--ant-color-green-5) !important;
+  color: var(--ant-color-green-5) !important;
+}
+
+.blue:hover {
+  border-color: var(--ant-color-primary-5) !important;
+  color: var(--ant-color-primary-5) !important;
+}
+
+.red:hover {
+  border-color: var(--ant-color-volcano-5) !important;
+  color: var(--ant-color-volcano-5) !important;
+}
+
+.orange:hover {
+  border-color: var(--ant-color-orange-5) !important;
+  color: var(--ant-color-orange-5) !important;
+}

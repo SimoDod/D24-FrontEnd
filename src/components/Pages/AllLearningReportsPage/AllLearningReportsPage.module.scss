@@ -1,0 +1,9 @@
+@import "../../../theme/sizes";
+
+.table {
+  :global {
+    .anticon {
+      font-size: $size3x !important;
+    }
+  }
+}

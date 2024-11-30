@@ -1,6 +1,7 @@
 import { Languages } from "./types";
 
-export const lngs: Languages = {
-  en: { nativeName: "English" },
-  de: { nativeName: "Deutsch" },
-};
+// Default language is always index 0
+export const languages: Languages = [
+  { shortName: "en", nativeName: "English" },
+  { shortName: "de", nativeName: "Deutsch" },
+];
